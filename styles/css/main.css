@@ -53,10 +53,11 @@ html, body {
     transform: translate(-50%, -50%);
     color: #FFF;
     text-align: center;
-    font-size: 50px;
+    font-size: 8vh;
     font-weight: 300;
     letter-spacing: 10px;
     transition: transform 0.1s linear;
+    font-weight: 300;
 }
 
 /* Gradient text effect */

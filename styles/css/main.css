@@ -1,0 +1,80 @@
+/* Reset styles */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lexend', sans-serif;
+    color: white;
+    text-align: center;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    overflow-x: hidden;
+}
+
+/* Star animations */
+@keyframes animStar {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-2000px); }
+}
+
+/* Star styles */
+.stars {
+    position: absolute;
+    background: transparent;
+}
+
+/* Small stars */
+#stars {
+    width: 1px;
+    height: 1px;
+    animation: animStar 50s linear infinite;
+}
+
+/* Medium stars */
+#stars2 {
+    width: 2px;
+    height: 2px;
+    animation: animStar 100s linear infinite;
+}
+
+/* Large stars */
+#stars3 {
+    width: 3px;
+    height: 3px;
+    animation: animStar 150s linear infinite;
+}
+
+/* Title with parallax effect */
+#title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #FFF;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 300;
+    letter-spacing: 10px;
+    transition: transform 0.1s linear;
+}
+
+/* Gradient text effect */
+#title span {
+    background: -webkit-linear-gradient(white, #38495a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Main content section */
+#content {
+    position: absolute;
+    top: 100vh; /* Starts right after the full-screen background */
+    width: 100%;
+    min-height: auto; /* Ensures it covers the screen when scrolling */
+    background: rgb(25, 25, 25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}

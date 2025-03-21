@@ -1,107 +1,97 @@
-/* Reset styles */
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
-
-html, body {
-    height: 100%;
+/* Box sizing rules */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /* Prevent font size inflation */
+  html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+  
+  /* Remove default margin in favour of better control in authored CSS */
+  body, h1, h2, h3, h4, p,
+  figure, blockquote, dl, dd {
+    margin-block-end: 0;
+  }
+  
+  /* Remove list styles on ul, ol elements with a list role */
+  ul[role='list'],
+  ol[role='list'] {
+    list-style: none;
+  }
+  
+  /* Set core body defaults */
+  body {
+    min-height: 100vh;
+    line-height: 1.5;
     margin: 0;
     padding: 0;
     font-family: 'Lexend', sans-serif;
     color: white;
-    text-align: center;
-    background: rgb(25, 25, 25); /* Background for the rest of the page */
+    background: rgb(25, 25, 25);
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-}
-
-/* Star animations */
-@keyframes animStar {
-    from { transform: translateY(0px); }
-    to { transform: translateY(-2000px); }
-}
-
-/* Title container with star background */
-#title-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1; /* Expands if content is removed */
-    width: 100%;
-    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-    overflow: hidden;
-}
-
-/* Star styles inside title only */
-.stars {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-/* Small stars */
-#stars {
-    width: 1px;
-    height: 1px;
-    animation: animStar 50s linear infinite;
-}
-
-/* Medium stars */
-#stars2 {
-    width: 2px;
-    height: 2px;
-    animation: animStar 100s linear infinite;
-}
-
-/* Large stars */
-#stars3 {
-    width: 3px;
-    height: 3px;
-    animation: animStar 150s linear infinite;
-}
-
-/* Title dynamically scales */
-#title {
-    color: #FFF;
-    text-align: center;
-    font-size: clamp(6vh, 10vw, 12vh); /* Dynamically resize text */
-    font-weight: 300;
-    letter-spacing: clamp(5px, 1vw, 15px); /* Responsive letter spacing */
-    max-width: 90%;
-}
-
-/* Gradient text effect */
-#title span {
-    background: -webkit-linear-gradient(white, #6c869f);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Main content section */
-#content {
-    width: 100%;
-    display: flex;
-    flex-grow: 1; /* Occupies remaining space */
-    background: rgb(25, 25, 25); /* Solid background for content */
-    font-size: 20px;
-    padding: 50px;
-}
-#navigation {
+  }
+  
+  /* Set shorter line heights on headings and interactive elements */
+  h1, h2, h3, h4,
+  button, input, label {
+    line-height: 1.1;
+  }
+  
+  /* Balance text wrapping on headings */
+  h1, h2,
+  h3, h4 {
+    text-wrap: balance;
+  }
+  
+  /* A elements that don't have a class get default styles */
+  a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+  }
+  
+  /* Make images easier to work with */
+  img,
+  picture {
+    max-width: 100%;
+    display: block;
+  }
+  
+  /* Inherit fonts for inputs and buttons */
+  input, button,
+  textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+  }
+  
+  /* Make sure textareas without a rows attribute are not tiny */
+  textarea:not([rows]) {
+    min-height: 10em;
+  }
+  
+  /* Anything that has been anchored to should have extra scroll margin */
+  :target {
+    scroll-margin-block: 5ex;
+  }
+  
+  /* Navigation styles */
+  #navigation {
     width: 100%;
     height: 7vh;
-    color:white;
+    color: white;
     background: rgb(25, 25, 25);
-
     display: flex;
     flex-direction: row;
     justify-content: left;
     align-items: center;
-}
-.nav-button {
+  }
+  
+  /* Navigation button styles */
+  .nav-button {
     position: relative;
     padding: 10px 20px;
     color: white;
@@ -115,16 +105,16 @@ html, body {
     cursor: pointer;
     transition: transform 0.2s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
     overflow: hidden;
-}
-
-/* Hover Effect */
-.nav-button:hover {
-    color: #7fbcff; /* Light futuristic blue */
+  }
+  
+  /* Hover Effect */
+  .nav-button:hover {
+    color: #7fbcff;
     background-color: rgb(15, 15, 15);
-}
-
-/* Underline Animation */
-.nav-button::after {
+  }
+  
+  /* Underline Animation */
+  .nav-button::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -133,33 +123,148 @@ html, body {
     height: 2px;
     background: #7fbcff;
     transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-}
-
-.nav-button:hover::after {
+  }
+  
+  .nav-button:hover::after {
     width: 100%;
     left: 0;
-}
-
-/* Remove text-decoration and inherit color for <a> */
-.nav-button > a {
+  }
+  
+  /* Remove text-decoration and inherit color for <a> */
+  .nav-button > a {
     text-decoration: none;
     color: inherit;
-}
-
-/* For the current page link */
-#current-page {
-    color: white; /* Keep the text white */
+  }
+  
+  /* For the current page link */
+  #current-page {
+    color: white;
     background-color: rgb(15, 15, 15);
     position: relative;
-}
-
-/* Add white underline for current page */
-#current-page::after {
+  }
+  
+  /* Add white underline for current page */
+  #current-page::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 2px;
-    background: white; /* White underline */
-}
+    background: white;
+  }
+  
+  /* Title container */
+  #title-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50vh;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    overflow: hidden;
+  }
+  
+  /* Star styles */
+  .stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  #stars {
+    width: 1px;
+    height: 1px;
+    animation: animStar 50s linear infinite;
+  }
+  
+  #stars2 {
+    width: 2px;
+    height: 2px;
+    animation: animStar 100s linear infinite;
+  }
+  
+  #stars3 {
+    width: 3px;
+    height: 3px;
+    animation: animStar 150s linear infinite;
+  }
+  
+  /* Title */
+  #title {
+    color: #FFF;
+    text-align: center;
+    font-size: clamp(6vh, 10vw, 12vh);
+    font-weight: 300;
+    letter-spacing: clamp(5px, 1vw, 15px);
+    max-width: 90%;
+  }
+  
+  #title span {
+    background: -webkit-linear-gradient(white, #6c869f);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Main content section */
+  #content {
+    width: 100%;
+    background: rgb(25, 25, 25);
+    font-size: 20px;
+    padding: 50px;
+    display: block;
+    box-sizing: border-box;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 1200px;
+    flex-shrink: 0;
+    min-height: 0;
+  }
+  
+  /* Heading 1 Style (Welcome) */
+  #content h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: #7fbcff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  /* Heading 2 Style */
+  #content h2 {
+    font-size: 2.2rem;
+    color: white;
+    font-weight: 600;
+    margin: 30px 0 15px 0;
+    text-align: left;
+    letter-spacing: 1px;
+  }
+  
+  /* Paragraph Style */
+  #content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    text-align: left;
+    margin-bottom: 30px;
+    color: #d1d1d1;
+  }
+  
+  /* Border between sections */
+  #content h2 + p {
+    border-top: 1px solid #444;
+    padding-top: 30px;
+    margin-top: 30px;
+  }
+  
+  /* Star animations */
+  @keyframes animStar {
+    from { transform: translateY(0); }
+    to { transform: translateY(-2000px); }
+  }

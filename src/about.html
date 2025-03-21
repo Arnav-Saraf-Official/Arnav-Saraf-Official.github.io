@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arnav's Website</title>
+    <title>About - Arnav's Website</title>
     <link rel="stylesheet" href="../styles/css/main.css">
     <link rel="stylesheet" href="../styles/css/swup.css">
+    <script defer src="../js/swup.js"></script>
 </head>
 <body>
 	
@@ -14,23 +15,47 @@
 		<a href="about.html" class="nav-button" id="current-page"><section>About ✦</section></a>
 		<a href="portfolio.html" class="nav-button"><section>Portfolio 🖿</section></a>
 	</div>
-    
-    <div id="title-container">
-        <div class="stars" id="stars"></div>
-        <div class="stars" id="stars2"></div>
-        <div class="stars" id="stars3"></div>
-        <div id="title">
-            <span>Hi there,</span><br>
-            <span>This is the about page</span>
-        </div>
-    </div>
 
-    <!-- Main content -->
-    <div id="content">
-        <p>This site is currently a work in progress. Check back later.</p>
-    </div>
+    <main id="swup" class="transition">
+        <div id="title-container">
+            <div class="stars" id="stars"></div>
+            <div class="stars" id="stars2"></div>
+            <div class="stars" id="stars3"></div>
+            <div id="title">
+                <span>About Me</span>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div id="content">
+            <h1>Who Am I?</h1>
+            <p>
+                I'm Arnav, a passionate developer, researcher, and problem-solver. I love creating things, whether it’s software, AI models, or engineering projects.
+            </p>
+
+            <h2>My Journey</h2>
+            <p>
+                I’ve worked on a variety of projects, from AI-based landslide prediction to non-invasive brain surgery concepts. My interests range from machine learning to physics, and I’m always exploring new ideas.
+            </p>
+
+            <h2>Let’s Connect</h2>
+            <p>
+                If you’d like to chat about technology, science, or collaborations, feel free to reach out!
+            </p>
+        </div>
+    </main>
 
     <script src="../styles/stars.js"></script>
-    <script type="module" src="../js/swup.js"></script>
+
+    <!-- Swup ES Module Import -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const swup = new Swup({
+                animationSelector: '[class*="transition"]',
+                animateHistoryBrowsing: true
+            });
+        });
+    </script>
+
 </body>
 </html>

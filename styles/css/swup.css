@@ -1,7 +1,10 @@
-html.is-changing .transition-fade {
-    transition: opacity 0.25s;
-    opacity: 1;
-  }
-  html.is-animating .transition-fade {
+/* Fade transition effect */
+html.is-changing .transition{
     opacity: 0;
-  }
+    transition: opacity 2s ease-in-out;
+}
+
+html.is-rendering .transition{
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+}

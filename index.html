@@ -1,22 +1,41 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Arnav's Website</title>
-		<meta charset="utf-16">
-		<link rel="stylesheet" href="styles/css/main.css">
-	</head>
-	<body>
-		<div id="stars"></div>
-		<div id="stars2"></div>
-		<div id="stars3"></div>
-		<div id="title">
-			<span>Hi there,</span><br>
-			<span>My name is Arnav</span>
-		</div>
-		<div id="content">
-			<p>This site is currently a work in progress. Check back later.</p>
-		</div>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arnav's Website</title>
+    <link rel="stylesheet" href="styles/css/main.css">
+</head>
+<body onload="increaseVisitorCount()">
+	
+	<div id="navigation">
+		<a href="src/home.html" class="nav-button"><section>Home 🏠︎</section></a>
+		<a href="src/about.html" class="nav-button"><section>About ✦</section></a>
+		<a href="src/portfolio.html" class="nav-button"><section>Portfolio 🖿</section></a>
 
+	</div>
+    
+    <div id="title-container">
+        <div class="stars" id="stars"></div>
+        <div class="stars" id="stars2"></div>
+        <div class="stars" id="stars3"></div>
+        <div id="title">
+            <span>Hi there,</span><br>
+            <span>My name is Arnav</span>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div id="content">
+        <p>
+			Hello,
+			Welcome to my site. You are the <span id="visit"></span> person to visit this site.
+			<br>
+			Have a look around.
+		</p>
+    </div>
+
+	<script src="js/visitorcount.js"></script>
     <script src="styles/stars.js"></script>
-	</body>
+</body>
 </html>

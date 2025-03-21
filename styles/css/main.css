@@ -8,8 +8,10 @@ html, body {
     font-family: 'Lexend', sans-serif;
     color: white;
     text-align: center;
-    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    background: rgb(25, 25, 25); /* Background for the rest of the page */
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Star animations */
@@ -18,10 +20,27 @@ html, body {
     to { transform: translateY(-2000px); }
 }
 
-/* Star styles */
+/* Title container with star background */
+#title-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Expands if content is removed */
+    width: 100%;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    overflow: hidden;
+}
+
+/* Star styles inside title only */
 .stars {
     position: absolute;
-    background: transparent;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
 /* Small stars */
@@ -45,37 +64,102 @@ html, body {
     animation: animStar 150s linear infinite;
 }
 
-/* Title with parallax effect */
+/* Title dynamically scales */
 #title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     color: #FFF;
     text-align: center;
-    font-size: 8vh;
+    font-size: clamp(6vh, 10vw, 12vh); /* Dynamically resize text */
     font-weight: 300;
-    letter-spacing: 10px;
-    transition: transform 0.1s linear;
-    font-weight: 300;
+    letter-spacing: clamp(5px, 1vw, 15px); /* Responsive letter spacing */
+    max-width: 90%;
 }
 
 /* Gradient text effect */
 #title span {
-    background: -webkit-linear-gradient(white, #38495a);
-    -webkit-background-clip: text;
+    background: -webkit-linear-gradient(white, #6c869f);
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 /* Main content section */
 #content {
-    position: absolute;
-    top: 100vh; /* Starts right after the full-screen background */
     width: 100%;
-    min-height: auto; /* Ensures it covers the screen when scrolling */
-    background: rgb(25, 25, 25);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-grow: 1; /* Occupies remaining space */
+    background: rgb(25, 25, 25); /* Solid background for content */
     font-size: 20px;
+    padding: 50px;
+}
+#navigation {
+    width: 100%;
+    height: 7vh;
+    color:white;
+    background: rgb(25, 25, 25);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+.nav-button {
+    position: relative;
+    padding: 10px 20px;
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+/* Hover Effect */
+.nav-button:hover {
+    color: #7fbcff; /* Light futuristic blue */
+    background-color: rgb(15, 15, 15);
+}
+
+/* Underline Animation */
+.nav-button::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background: #7fbcff;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.nav-button:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Remove text-decoration and inherit color for <a> */
+.nav-button > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* For the current page link */
+#current-page {
+    color: white; /* Keep the text white */
+    background-color: rgb(15, 15, 15);
+    position: relative;
+}
+
+/* Add white underline for current page */
+#current-page::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: white; /* White underline */
 }

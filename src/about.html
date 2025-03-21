@@ -5,18 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Arnav's Website</title>
     <link rel="stylesheet" href="../styles/css/main.css">
-    <link rel="stylesheet" href="../styles/css/swup.css">
-    <script defer src="../js/swup.js"></script>
 </head>
 <body>
-	
-	<div id="navigation">
-		<a href="home.html" class="nav-button"><section>Home 🏠︎</section></a>
-		<a href="about.html" class="nav-button" id="current-page"><section>About ✦</section></a>
-		<a href="portfolio.html" class="nav-button"><section>Portfolio 🖿</section></a>
-	</div>
-
-    <main id="swup" class="transition">
+    <div id="navigation">
+        <a href="home.html" class="nav-button" id="current-page"><section>Home 🏠︎</section></a>
+        <a href="about.html" class="nav-button"><section>About ✦</section></a>
+        <a href="portfolio.html" class="nav-button"><section>Portfolio 🖿</section></a>
+    </div>
+    <main id="swup">
         <div id="title-container">
             <div class="stars" id="stars"></div>
             <div class="stars" id="stars2"></div>
@@ -25,37 +21,22 @@
                 <span>About Me</span>
             </div>
         </div>
-
         <!-- Main content -->
         <div id="content">
             <h1>Who Am I?</h1>
             <p>
-                I'm Arnav, a passionate developer, researcher, and problem-solver. I love creating things, whether it’s software, AI models, or engineering projects.
+                I'm Arnav, a passionate developer, researcher, and problem-solver. I love creating things, whether it's software, AI models, or engineering projects.
             </p>
-
             <h2>My Journey</h2>
             <p>
-                I’ve worked on a variety of projects, from AI-based landslide prediction to non-invasive brain surgery concepts. My interests range from machine learning to physics, and I’m always exploring new ideas.
+                I've worked on a variety of projects, from AI-based landslide prediction to non-invasive brain surgery concepts. My interests range from machine learning to physics, and I'm always exploring new ideas.
             </p>
-
-            <h2>Let’s Connect</h2>
+            <h2>Let's Connect</h2>
             <p>
-                If you’d like to chat about technology, science, or collaborations, feel free to reach out!
+                If you'd like to chat about technology, science, or collaborations, feel free to reach out!
             </p>
         </div>
     </main>
-
     <script src="../styles/stars.js"></script>
-
-    <!-- Swup ES Module Import -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const swup = new Swup({
-                animationSelector: '[class*="transition"]',
-                animateHistoryBrowsing: true
-            });
-        });
-    </script>
-
 </body>
 </html>

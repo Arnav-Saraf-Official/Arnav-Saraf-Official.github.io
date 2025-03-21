@@ -5,18 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arnav's Website</title>
     <link rel="stylesheet" href="../styles/css/main.css">
-    <link rel="stylesheet" href="../styles/css/swup.css">
-    <script defer src="../js/swup.js"></script>
 </head>
 <body>
-	
-	<div id="navigation">
-		<a href="home.html" class="nav-button" id="current-page"><section>Home 🏠︎</section></a>
-		<a href="about.html" class="nav-button"><section>About ✦</section></a>
-		<a href="portfolio.html" class="nav-button"><section>Portfolio 🖿</section></a>
-	</div>
-
-    <main id="swup" class="transition">
+    <div id="navigation">
+        <a href="home.html" class="nav-button" id="current-page"><section>Home 🏠︎</section></a>
+        <a href="about.html" class="nav-button"><section>About ✦</section></a>
+        <a href="portfolio.html" class="nav-button"><section>Portfolio 🖿</section></a>
+    </div>
+    <main id="swup">
         <div id="title-container">
             <div class="stars" id="stars"></div>
             <div class="stars" id="stars2"></div>
@@ -26,38 +22,23 @@
                 <span>My name is Arnav</span>
             </div>
         </div>
-
         <!-- Main content -->
         <div id="content">
             <h1>Welcome to My Website!</h1>
             <p>
                 Hi there!<br>
-                I’m Arnav, and I’m so glad you're here! Welcome to my personal corner of the web, where I share my passion for technology, creativity, and everything in between.
+                I'm Arnav, and I'm so glad you're here! Welcome to my personal corner of the web, where I share my passion for technology, creativity, and everything in between.
             </p>
-
             <h2>Explore My Projects</h2>
             <p>
-                Feel free to explore my projects, learn about my journey, and get to know more about the work I do. Whether you’re here for inspiration, collaboration, or just a bit of curiosity, I hope you find something that sparks your interest.
+                Feel free to explore my projects, learn about my journey, and get to know more about the work I do. Whether you're here for inspiration, collaboration, or just a bit of curiosity, I hope you find something that sparks your interest.
             </p>
-
             <h2>Get in Touch</h2>
             <p>
-                Enjoy your stay, and don’t hesitate to reach out if you’d like to connect!
+                Enjoy your stay, and don't hesitate to reach out if you'd like to connect!
             </p>
         </div>
     </main>
-
     <script src="../styles/stars.js"></script>
-
-    <!-- Swup ES Module Import -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const swup = new Swup({
-                animationSelector: '[class*="transition"]',
-                animateHistoryBrowsing: true
-            });
-        });
-    </script>
-
 </body>
 </html>

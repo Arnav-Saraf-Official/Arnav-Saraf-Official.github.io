@@ -1,3 +1,12 @@
+:root {
+    --primary-blue: #7fbcff;
+    --secondary-yellow: #ffcb74;
+    --accent-green: #5fd18c;
+    --dark-bg: #191919;
+    --light-text: #eaeaea;
+    --gray-bg: #303030;
+}
+
 /* Flexbox */
 .flex { display: flex; }
 .flexc { display: flex; justify-content: center; align-items: center; }
@@ -13,6 +22,7 @@
 .justs { justify-content: flex-start; }
 .juste { justify-content: flex-end; }
 
+.inline { display: inline; }
 /* Grid */
 .grid { display: grid; }
 .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); }
@@ -161,58 +171,6 @@
     left: 0;
 }
 
-/* 1️⃣ Hover - Subtle Lift */
-.hov-lift {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-.hov-lift:hover {
-    transform: translateY(-0.5vh);
-    box-shadow: 0 0.8vh 2vh rgba(255, 255, 255, 0.1);
-}
-
-/* 2️⃣ Hover - Soft Glow */
-.hov-glow {
-    transition: box-shadow 0.3s ease-in-out;
-}
-.hov-glow:hover {
-    box-shadow: 0 0 2vh rgba(127, 188, 255, 0.5);
-}
-
-/* 3️⃣ Hover - Underline Slide */
-.hov-underline {
-    position: relative;
-    transition: color 0.3s ease-in-out;
-}
-.hov-underline::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 0;
-    height: 0.2vh;
-    background: white;
-    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-}
-.hov-underline:hover::after {
-    width: 100%;
-    left: 0;
-}
-
-/* 4️⃣ Hover - Scale Up */
-.hov-scale {
-    transition: transform 0.3s ease-in-out;
-}
-.hov-scale:hover {
-    transform: scale(1.05);
-}
-
-/* 5️⃣ Hover - Rotate Slightly */
-.hov-rotate {
-    transition: transform 0.3s ease-in-out;
-}
-.hov-rotate:hover {
-    transform: rotate(3deg);
-}
 /* Width Utilities */
 .w1 { width: 10%; }
 .w2 { width: 20%; }
@@ -224,28 +182,85 @@
 .w8 { width: 80%; }
 .w9 { width: 90%; }
 .w10 { width: 100%; }
-.wv1 { width: 1vh; }
-.wv2 { width: 2vh; }
-.wv3 { width: 3vh; }
-.wv4 { width: 4vh; }
-.wv5 { width: 5vh; }
-.wv6 { width: 6vh; }
-.wv7 { width: 7vh; }
-.wv8 { width: 8vh; }
-.wv9 { width: 9vh; }
-.wv10 { width: 10vh; }
-.wv12 { width: 12vh; }
-.wv15 { width: 15vh; }
-.wv20 { width: 20vh; }
-.wv25 { width: 25vh; }
-.wv30 { width: 30vh; }
-.wv40 { width: 40vh; }
-.wv50 { width: 50vh; }
-.wv60 { width: 60vh; }
-.wv70 { width: 70vh; }
-.wv80 { width: 80vh; }
-.wv90 { width: 90vh; }
-.wv100 { width: 100vh; }
+.wv1 { width: 1vw; }
+.wv2 { width: 2vw; }
+.wv3 { width: 3vw; }
+.wv4 { width: 4vw; }
+.wv5 { width: 5vw; }
+.wv6 { width: 6vw; }
+.wv7 { width: 7vw; }
+.wv8 { width: 8vw; }
+.wv9 { width: 9vw; }
+.wv10 { width: 10vw; }
+.wv12 { width: 12vw; }
+.wv15 { width: 15vw; }
+.wv20 { width: 20vw; }
+.wv25 { width: 25vw; }
+.wv30 { width: 30vw; }
+.wv40 { width: 40vw; }
+.wv50 { width: 50vw; }
+.wv60 { width: 60vw; }
+.wv70 { width: 70vw; }
+.wv80 { width: 80vw; }
+.wv90 { width: 90vw; }
+.wv100 { width: 100vw; }
 
 /* Image Utilities */
 .invert {filter: invert(1);}
+
+/* HR Utilities */
+/* 1️⃣ Default Clean Divider */
+.hr {
+    border: none;
+    height: 0.2vh;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 3vh 0;
+}
+
+/* 2️⃣ Gradient Glow Divider */
+.hr-glow {
+    border: none;
+    height: 0.3vh;
+    background: linear-gradient(to right, transparent, #7fbcff, transparent);
+    margin: 4vh 0;
+    box-shadow: 0 0 1vh rgba(127, 188, 255, 0.5);
+}
+
+/* 3️⃣ Soft Dashed Divider */
+.hr-dashed {
+    border: none;
+    height: 0.2vh;
+    background: repeating-linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.2) 5px,
+        transparent 5px,
+        transparent 10px
+    );
+    margin: 3vh 0;
+}
+
+/* 4️⃣ Fancy Double-Line Divider */
+.hr-double {
+    border: none;
+    height: 0.5vh;
+    background: linear-gradient(to right, transparent, #ffffff50, transparent), 
+                linear-gradient(to right, transparent, #ffffff20, transparent);
+    background-size: 100% 0.2vh, 100% 0.5vh;
+    background-repeat: no-repeat;
+    background-position: center bottom, center top;
+    margin: 4vh 0;
+}
+
+/* 5️⃣ Animated Expanding Divider */
+.hr-animate {
+    border: none;
+    height: 0.2vh;
+    background: rgba(255, 255, 255, 0.2);
+    width: 10%;
+    margin: 3vh auto;
+    transition: width 0.5s ease-in-out;
+}
+.hr-animate:hover {
+    width: 100%;
+}

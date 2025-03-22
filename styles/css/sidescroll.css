@@ -1,0 +1,56 @@
+/* ========================= */
+/* 🌊 Side Scroll Effect */
+/* ========================= */
+.sidescrolljs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    gap: 2vw;
+    padding: 2vh 2vw;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+}
+
+/* Hide scrollbar in WebKit browsers */
+.sidescrolljs::-webkit-scrollbar {
+    display: none;
+}
+
+/* Style for inner items inside the scrolling section */
+.sidescrolljs > * {
+    flex: 0 0 auto;
+    min-width: 30vw; /* Adjust based on content */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2vh;
+    border-radius: 1vh;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect to make it feel interactive */
+.sidescrolljs > *:hover {
+    transform: scale(1.05);
+}
+
+/* ========================= */
+/* 🌟 Bonus: Auto Scroll Effect (Optional) */
+/* ========================= */
+@keyframes auto-scroll {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.sidescroll-auto {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow: hidden;
+    gap: 2vw;
+    animation: auto-scroll 10s linear infinite;
+}

@@ -1,0 +1,251 @@
+/* Flexbox */
+.flex { display: flex; }
+.flexc { display: flex; justify-content: center; align-items: center; }
+.flexr { display: flex; flex-direction: row; }
+.flexcol { display: flex; flex-direction: column; }
+.flexsb { display: flex; justify-content: space-between; }
+.flexsa { display: flex; justify-content: space-around; }
+.flexse { display: flex; justify-content: space-evenly; }
+.alignc { align-items: center; }
+.aligns { align-items: flex-start; }
+.aligne { align-items: flex-end; }
+.justc { justify-content: center; }
+.justs { justify-content: flex-start; }
+.juste { justify-content: flex-end; }
+
+/* Grid */
+.grid { display: grid; }
+.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); }
+.gap1 { gap: 1vh; }
+.gap2 { gap: 2vh; }
+.gap3 { gap: 3vh; }
+.gap4 { gap: 4vh; }
+
+/* Text */
+.txtc { text-align: center; }
+.txtl { text-align: left; }
+.txtr { text-align: right; }
+.bold { font-weight: bold; }
+.italic { font-style: italic; }
+.uline { text-decoration: underline; }
+.txts { font-size: clamp(1.2vh, 1.2vw, 2vh); }
+.txtm { font-size: clamp(2vh, 2vw, 3vh); }
+.txtl { font-size: clamp(3vh, 3vw, 4vh); }
+.txthuge { font-size: clamp(5vh, 5vw, 7vh); }
+.txtdcn { text-decoration: none; }
+
+/* Margin & Padding (Scaled to Viewport) */
+.m0 { margin: 0; }
+.m1 { margin: 1vh; }
+.m2 { margin: 2vh; }
+.m3 { margin: 3vh; }
+.m4 { margin: 4vh; }
+.mt1 { margin-top: 1vh; }
+.mt2 { margin-top: 2vh; }
+.mt3 { margin-top: 3vh; }
+.mb1 { margin-bottom: 1vh; }
+.mb2 { margin-bottom: 2vh; }
+.mb3 { margin-bottom: 3vh; }
+.p0 { padding: 0; }
+.p1 { padding: 1vh; }
+.p2 { padding: 2vh; }
+.p3 { padding: 3vh; }
+.p4 { padding: 4vh; }
+
+/* Width & Height */
+.w100 { width: 100%; }
+.w75 { width: 75%; }
+.w50 { width: 50%; }
+.w25 { width: 25%; }
+.h100 { height: 100%; }
+.h75 { height: 75%; }
+.h50 { height: 50%; }
+.h25 { height: 25%; }
+.maxw { max-width: 1200px; margin: auto; }
+
+/* Borders */
+.b1 { border: 0.2vh solid #444; }
+.b2 { border: 0.3vh solid #555; }
+.br1 { border-radius: 0.5vh; }
+.br2 { border-radius: 1vh; }
+.br3 { border-radius: 2vh; }
+.shadow { box-shadow: 0 0.5vh 2vh rgba(0, 0, 0, 0.3); }
+
+/* Cursor */
+.pointer { cursor: pointer; }
+.notallowed { cursor: not-allowed; }
+
+/* Base Button Style */
+.btn {
+    display: inline-block;
+    padding: clamp(0.8vh, 1.2vw, 1.5vh) clamp(1.5vh, 2vw, 3vh);
+    font-size: clamp(1.2vh, 1.5vw, 2vh);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 0.5vh;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    outline: none;
+}
+
+/* 1️⃣ Solid Neon Glow Button */
+.btn-glow {
+    background-color: #0a84ff;
+    color: white;
+    box-shadow: 0 0 1vh rgba(10, 132, 255, 0.7);
+}
+.btn-glow:hover {
+    background-color: #0066cc;
+    box-shadow: 0 0 2vh rgba(10, 132, 255, 1);
+}
+
+/* 2️⃣ Glassmorphism Button */
+.btn-glass {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 0.2vh solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* 3️⃣ Outline Button */
+.btn-outline {
+    background: transparent;
+    color: #7fbcff;
+    border: 0.2vh solid #7fbcff;
+}
+.btn-outline:hover {
+    background: #7fbcff;
+    color: black;
+}
+
+/* 4️⃣ Minimal Dark Button */
+.btn-dark {
+    background: rgb(15, 15, 15);
+    color: white;
+    border: 0.2vh solid #333;
+    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.4);
+}
+.btn-dark:hover {
+    background: rgb(25, 25, 25);
+    box-shadow: 0 0.8vh 1.5vh rgba(0, 0, 0, 0.5);
+}
+
+/* 5️⃣ Futuristic Button (Border Animation) */
+.btn-future {
+    position: relative;
+    background: transparent;
+    color: white;
+    border: 0.2vh solid white;
+    overflow: hidden;
+}
+.btn-future::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+.btn-future:hover::before {
+    left: 0;
+}
+
+/* 1️⃣ Hover - Subtle Lift */
+.hov-lift {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.hov-lift:hover {
+    transform: translateY(-0.5vh);
+    box-shadow: 0 0.8vh 2vh rgba(255, 255, 255, 0.1);
+}
+
+/* 2️⃣ Hover - Soft Glow */
+.hov-glow {
+    transition: box-shadow 0.3s ease-in-out;
+}
+.hov-glow:hover {
+    box-shadow: 0 0 2vh rgba(127, 188, 255, 0.5);
+}
+
+/* 3️⃣ Hover - Underline Slide */
+.hov-underline {
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+.hov-underline::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 0.2vh;
+    background: white;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+.hov-underline:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* 4️⃣ Hover - Scale Up */
+.hov-scale {
+    transition: transform 0.3s ease-in-out;
+}
+.hov-scale:hover {
+    transform: scale(1.05);
+}
+
+/* 5️⃣ Hover - Rotate Slightly */
+.hov-rotate {
+    transition: transform 0.3s ease-in-out;
+}
+.hov-rotate:hover {
+    transform: rotate(3deg);
+}
+/* Width Utilities */
+.w1 { width: 10%; }
+.w2 { width: 20%; }
+.w3 { width: 30%; }
+.w4 { width: 40%; }
+.w5 { width: 50%; }
+.w6 { width: 60%; }
+.w7 { width: 70%; }
+.w8 { width: 80%; }
+.w9 { width: 90%; }
+.w10 { width: 100%; }
+.wv1 { width: 1vh; }
+.wv2 { width: 2vh; }
+.wv3 { width: 3vh; }
+.wv4 { width: 4vh; }
+.wv5 { width: 5vh; }
+.wv6 { width: 6vh; }
+.wv7 { width: 7vh; }
+.wv8 { width: 8vh; }
+.wv9 { width: 9vh; }
+.wv10 { width: 10vh; }
+.wv12 { width: 12vh; }
+.wv15 { width: 15vh; }
+.wv20 { width: 20vh; }
+.wv25 { width: 25vh; }
+.wv30 { width: 30vh; }
+.wv40 { width: 40vh; }
+.wv50 { width: 50vh; }
+.wv60 { width: 60vh; }
+.wv70 { width: 70vh; }
+.wv80 { width: 80vh; }
+.wv90 { width: 90vh; }
+.wv100 { width: 100vh; }
+
+/* Image Utilities */
+.invert {filter: invert(1);}

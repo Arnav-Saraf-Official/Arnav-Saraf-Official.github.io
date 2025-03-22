@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arnav's Website</title>
     <link rel="stylesheet" href="../styles/css/main.css">
+    <link rel="stylesheet" href="../styles/css/classes.css">
 </head>
 <body>
-    <div id="navigation">
+
+    <!-- Navigation Bar -->
+    <header id="navigation">
         <a href="home.html" class="nav-button" id="current-page"><section>Home 🏠︎</section></a>
         <a href="about.html" class="nav-button"><section>About ✦</section></a>
         <a href="portfolio.html" class="nav-button"><section>Portfolio 🖿</section></a>
-    </div>
-    <main id="swup">
-        <div id="title-container">
+    </header>
+
+        <!-- Hero Section -->
+        <section id="title-container">
             <div class="stars" id="stars"></div>
             <div class="stars" id="stars2"></div>
             <div class="stars" id="stars3"></div>
@@ -21,24 +25,36 @@
                 <span>Hi there,</span><br>
                 <span>My name is Arnav</span>
             </div>
-        </div>
-        <!-- Main content -->
+        </section>
+
+        <!-- Welcome Section -->
         <div id="content">
-            <h1>Welcome to My Website!</h1>
-            <p>
-                Hi there!<br>
-                I'm Arnav, and I'm so glad you're here! Welcome to my personal corner of the web, where I share my passion for technology, creativity, and everything in between.
-            </p>
-            <h2>Explore My Projects</h2>
-            <p>
-                Feel free to explore my projects, learn about my journey, and get to know more about the work I do. Whether you're here for inspiration, collaboration, or just a bit of curiosity, I hope you find something that sparks your interest.
-            </p>
-            <h2>Get in Touch</h2>
-            <p>
-                Enjoy your stay, and don't hesitate to reach out if you'd like to connect!
-            </p>
+            <div class="flexr alignc justc gap3 p3 br2 hov-lift glass-effect">
+                <img src="../assets/profile.jpg" alt="Arnav's Profile Picture" class="br2 w4 hov-glow">
+                <section class="p2">
+                    <h3>Welcome,</h3>
+                    <p>
+                        I'm Arnav, a student currently in 8th grade.<br> 
+                        I'm a passionate developer, researcher, and problem-solver. I love creating and learning new things, whether it's software, AI models, engineering projects, or music. <br>
+                        <br>
+                        In my free time, I love to explore new ideas and try to learn as much as I can. <br>
+                        Feel free to explore around my site!
+                    </p>
+                    <a href="about.html" class=" btn btn-future txtdcn">Learn More</a>
+                    <a href="portfolio.html" class=" btn btn-future txtdcn">Portfolio</a>
+                </section>
+            </div>
+            <section class="flexc p2 mt3">
+                <a class="txtdcn btn btn-dark w4 flexr alignc gap1" href="https://github.com/Arnav-Saraf-Official">
+                    <img src="../assets/github-mark.svg" class="wv5 invert" alt="GitHub Logo">
+                    <p>Github</p>
+                </a>
+            </section>            
         </div>
-    </main>
+
+
+    <!-- JavaScript -->
     <script src="../styles/stars.js"></script>
+
 </body>
 </html>

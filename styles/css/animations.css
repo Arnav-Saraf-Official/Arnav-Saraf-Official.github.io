@@ -139,3 +139,15 @@
     from { transform: scale(1); }
     to { transform: scale(1.05); }
 }
+.left-right{
+    animation: left-right 1.5s infinite;
+}
+@keyframes left-right {
+    0% { transform: translateX(0); }  
+    15% { transform: translateX(-3vh); } /* Strong pull left */
+    35% { transform: translateX(2vh); }  /* Quick rebound right */
+    55% { transform: translateX(-1vh); } /* Slower oscillation */
+    75% { transform: translateX(0.5vh); } /* Even slower */
+    100% { transform: translateX(0); }  /* Settled */
+}
+

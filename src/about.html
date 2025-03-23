@@ -3,40 +3,124 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Arnav's Website</title>
+    <title>Arnav's Website</title>
     <link rel="stylesheet" href="../styles/css/main.css">
+    <link rel="stylesheet" href="../styles/css/classes.css">
+    <link rel="stylesheet" href="../styles/css/animations.css">
+    <link rel="stylesheet" href="../styles/css/jshelper.css">
+    <link rel="stylesheet" href="../styles/css/sidescroll.css">
 </head>
 <body>
-    <div id="navigation">
+
+    <!-- Navigation Bar -->
+    <header id="navigation">
         <a href="home.html" class="nav-button"><section>Home 🏠︎</section></a>
         <a href="about.html" class="nav-button" id="current-page"><section>About ✦</section></a>
         <a href="portfolio.html" class="nav-button"><section>Portfolio 🖿</section></a>
-    </div>
-    <main id="swup">
-        <div id="title-container">
+    </header>
+
+        <!-- Hero Section -->
+        <section id="title-container">
             <div class="stars" id="stars"></div>
             <div class="stars" id="stars2"></div>
             <div class="stars" id="stars3"></div>
             <div id="title">
-                <span>About Me</span>
+                <span>Hi there,</span><br>
+                <span>My name is Arnav</span>
             </div>
-        </div>
-        <!-- Main content -->
+        </section>
+        <hr class="hr-double">
+        <!-- Welcome Section -->
         <div id="content">
-            <h1>Who Am I?</h1>
-            <p>
-                I'm Arnav, a passionate developer, researcher, and problem-solver. I love creating things, whether it's software, AI models, or engineering projects.
-            </p>
-            <h2>My Journey</h2>
-            <p>
-                I've worked on a variety of projects, from AI-based landslide prediction to non-invasive brain surgery concepts. My interests range from machine learning to physics, and I'm always exploring new ideas.
-            </p>
-            <h2>Let's Connect</h2>
-            <p>
-                If you'd like to chat about technology, science, or collaborations, feel free to reach out!
-            </p>
+            <section style="background-color: rgb(30, 30, 30); height: 99vh;" class="p3 br2 flexcol justc">
+                <h3 class="txtc">Some Facts About Me</h3>
+            
+                <div class="sidescrolljs">
+                    <!-- Fact Panel 1 (Intro) -->
+                    <div class="flexr alignc justc gap4 p4 br2 w75 js-border-cycle">
+                        <section class="p3 w5">
+                            <h3>About Me</h3>
+                            <p>
+                                My full name is Arnav Saraf, and I am currently 13 years old.  
+                                I'm a student in 8th grade, and I'm passionate about AI, physics, robotics, quantum computing, and areospace engineering.
+                                I have always been interested in technology, and I'm always learning new things. But after learning, I find myself keen to
+                                apply what I have learned for a real world use. 
+                                <br>
+                                Visit my portfolio to see what I've achived, or check out the projects to see what I'm currently working on.
+                            </p>
+                            <a href="portfolio.html" class="btn btn-outline txtdcn float">Portfolio</a>
+                            <a href="projects.html" class="btn btn-outline txtdcn float">Projects</a>
+                        </section>
+                        <img src="../assets/profile.jpg" alt="Arnav's Profile Picture" class="br2 w4">
+                    </div>
+            
+                    <!-- Fact Panel 2 (AI & Coding) -->
+                    <div class="flexr alignc justc gap4 p4 br2 w75">
+                        <img src="../assets/coding.svg" alt="Coding Icon" class="br2 w3">
+                        <section class="p3 w5">
+                            <h3>AI & Coding</h3>
+                            <p>
+                                I've developed AI models for **landslide prediction** and **allergen detection**.  
+                                I love building **machine learning models**, coding in Python, and working on **real-world problem-solving**.
+                            </p>
+                            <a href="portfolio.html" class="btn btn-future txtdcn float">View My Work</a>
+                        </section>
+                    </div>
+            
+                    <!-- Fact Panel 3 (Music & Creativity) -->
+                    <div class="flexr alignc justc gap4 p4 br2 w75">
+                        <img src="../assets/music.svg" alt="Music Icon" class="br2 w3">
+                        <section class="p3 w5">
+                            <h3>Music & Creativity</h3>
+                            <p>
+                                I play **tabla and piano**, and I enjoy exploring how creativity connects with **science and technology**.  
+                                Music helps me think outside the box!
+                            </p>
+                        </section>
+                    </div>
+            
+                    <!-- Fact Panel 4 (Exploration & Learning) -->
+                    <div class="flexr alignc justc gap4 p4 br2 w75">
+                        <img src="../assets/learning.svg" alt="Learning Icon" class="br2 w3">
+                        <section class="p3 w5">
+                            <h3>Always Learning</h3>
+                            <p>
+                                I'm constantly **learning new technologies**, expanding my skills in **AI, physics, and engineering**.  
+                                I believe in **lifelong learning and pushing boundaries**!
+                            </p>
+                        </section>
+                    </div>
+                </div>
+                <i class="txtc left-right js-color-cycle">Scroll to see more ↣</i>
+            </section>            
+            
         </div>
-    </main>
-    <script src="../styles/stars.js"></script>
+        <hr class="hr-double">
+        <footer class="flexcol alignc p4 wv100 footer-bg br2">
+            
+            <h5 class="txtl m0 pulse">Let's Connect</h3>
+            <p class="txtm txtc w75 mb2">Feel free to reach out for any questions!</p>
+            
+            <div class="flexr gap4">
+                <a class="txtdcn btn btn-dark flexc p2 hov-scale hov-doubleline" href="https://github.com/Arnav-Saraf-Official">
+                    <img src="../assets/github-mark.svg" class="wv3 invert" alt="GitHub Logo">
+                    <span>GitHub</span>
+                </a>
+                <a class="txtdcn btn btn-dark flexc p2 hov-scale hov-doubleline" href="mailto:reacharnavsaraf@gmail.com">
+                    <img src="../assets/email.svg" class="wv3 invert" alt="Email Icon">
+                    <span>Email</span>
+                </a>
+            </div>
+            
+            <p class="txts mt3 opacity-50">&copy; 2025 Arnav Saraf. All rights reserved.</p>
+        </footer>
+        
+        
+        
+           
+    <!-- JavaScript -->
+    <script src="../styles/js/stars.js"></script>
+    <script src="../styles/js/jstyles.js"></script>
+    <script src="../js/side-scroll.js"></script>
 </body>
 </html>

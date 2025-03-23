@@ -110,3 +110,9 @@ document.querySelectorAll(".js-color-cycle").forEach(el => {
         el.style.color = getRandomColor();
     }, 1500);
 });
+
+document.querySelectorAll(".js-border-cycle").forEach(el => {
+    setInterval(() => {
+        el.style.borderColor = getRandomColor();
+    }, 1500);
+});

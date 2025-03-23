@@ -1,56 +1,61 @@
-/* ========================= */
-/* 🌊 Side Scroll Effect */
-/* ========================= */
+/* Fix Side Scroll Layout */
 .sidescrolljs {
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
-    white-space: nowrap;
     gap: 2vw;
-    padding: 2vh 2vw;
-    scrollbar-width: none; /* Hide scrollbar in Firefox */
-    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+    padding: 2vh 3vw;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    height: auto; /* Allow height to adjust to content */
 }
 
-/* Hide scrollbar in WebKit browsers */
+/* Hide Scrollbar for Webkit Browsers */
 .sidescrolljs::-webkit-scrollbar {
     display: none;
 }
 
-/* Style for inner items inside the scrolling section */
-.sidescrolljs > * {
+/* Style for individual panels */
+.sidescrolljs > div {
     flex: 0 0 auto;
-    min-width: 30vw; /* Adjust based on content */
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2vh;
-    border-radius: 1vh;
-    transition: transform 0.3s ease-in-out;
+    width: 80vw; /* Adjust width as needed */
+    max-width: 70vw; /* Prevent panels from becoming too wide on large screens */
+    white-space: normal; /* Allow text to wrap */
+    overflow: hidden; /* Prevent content from overflowing */
+    background-color: rgba(50, 50, 50, 0.8); /* Add a background for better readability */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-/* Hover effect to make it feel interactive */
-.sidescrolljs > *:hover {
-    transform: scale(1.05);
+/* Content within panels */
+.sidescrolljs > div > section {
+    height: 100%;
+    overflow-y: auto; /* Allow vertical scrolling if content is too long */
+    padding: 20px;
 }
 
-/* ========================= */
-/* 🌟 Bonus: Auto Scroll Effect (Optional) */
-/* ========================= */
-@keyframes auto-scroll {
-    0% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
+/* Hover Effect */
+.sidescrolljs > div:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
 }
 
-.sidescroll-auto {
-    display: flex;
-    flex-wrap: nowrap;
-    white-space: nowrap;
-    overflow: hidden;
-    gap: 2vw;
-    animation: auto-scroll 10s linear infinite;
+/* Responsive image sizing */
+.sidescrolljs img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Typography adjustments */
+.sidescrolljs h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.sidescrolljs p {
+    font-size: 0.9em;
+    line-height: 1.5;
 }

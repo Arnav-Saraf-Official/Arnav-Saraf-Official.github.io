@@ -2,23 +2,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const scrollSections = document.querySelectorAll(".sidescrolljs");
 
     scrollSections.forEach((section) => {
-        let scrollAmount = 0;
-        section.style.overflow = "hidden"; // Hide default scrollbar
+        // Function to update scrolling
+        function scrollContent(direction) {
+            const scrollStep = 100; // Adjust scroll step size
+            let newScrollAmount = section.scrollLeft + direction * scrollStep;
 
-        section.addEventListener("wheel", (event) => {
-            event.preventDefault(); // Prevent default scrolling behavior
-            scrollAmount += event.deltaY * 0.8; // Adjust speed
-
-            // Limit scrolling to section width
-            scrollAmount = Math.max(
-                0,
-                Math.min(scrollAmount, section.scrollWidth - section.clientWidth)
-            );
+            // Ensure newScrollAmount is within valid bounds
+            newScrollAmount = Math.max(0, Math.min(newScrollAmount, section.scrollWidth - section.clientWidth));
 
             section.scrollTo({
-                left: scrollAmount,
+                left: newScrollAmount,
                 behavior: "smooth",
             });
-        });
+        }
+
+        // Get the left and right scroll buttons by their specific classes
+        const leftButton = section.querySelector(".js-left-scroll");
+        const rightButton = section.querySelector(".js-right-scroll");
+
+        // Assign click events to buttons for scrolling
+        if (leftButton) {
+            leftButton.addEventListener("click", () => scrollContent(-1));
+        }
+        if (rightButton) {
+            rightButton.addEventListener("click", () => scrollContent(1));
+        }
     });
 });
+    

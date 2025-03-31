@@ -268,3 +268,55 @@
     from { transform: translateY(0); }
     to { transform: translateY(-2000px); }
   }
+
+  /* Custom scrollbar styles */
+.sidescrolljs::-webkit-scrollbar {
+  width: 12px;  /* Set the width of the scrollbar */
+  height: 12px; /* Set the height of the scrollbar (for horizontal scroll) */
+}
+
+/* Track (background) */
+.sidescrolljs::-webkit-scrollbar-track {
+  background: #333;  /* Dark background color */
+  border-radius: 10px; /* Round the edges of the scrollbar */
+}
+
+/* Handle (thumb) */
+.sidescrolljs::-webkit-scrollbar-thumb {
+  background-color: #ff6b6b;  /* Vibrant color matching your theme */
+  border-radius: 10px;  /* Rounded corners for the thumb */
+  border: 2px solid #fff;  /* White border around the thumb */
+  transition: background-color 0.3s ease;  /* Smooth color transition */
+}
+
+/* Handle (thumb) on hover */
+.sidescrolljs::-webkit-scrollbar-thumb:hover {
+  background-color: #ff3d3d;  /* Slightly darker red on hover */
+}
+
+/* Handle (thumb) on active click */
+.sidescrolljs::-webkit-scrollbar-thumb:active {
+  background-color: #ff0000;  /* A deep red when the user clicks on the scrollbar */
+}
+
+/* Scrollbar corner (where horizontal and vertical bars meet) */
+.sidescrolljs::-webkit-scrollbar-corner {
+  background: #333;
+}
+
+/* Custom scrollbar styles for horizontal scroll */
+.sidescrolljs::-webkit-scrollbar-horizontal {
+  height: 10px;  /* Adjust the height for horizontal scroll */
+}
+
+.sidescrolljs::-webkit-scrollbar-thumb-horizontal {
+  background-color: #ff6b6b;
+  border-radius: 10px;
+  border: 2px solid #fff;
+}
+
+/* Hover effects for horizontal scrollbar thumb */
+.sidescrolljs::-webkit-scrollbar-thumb-horizontal:hover {
+  background-color: #ff3d3d;
+}
+

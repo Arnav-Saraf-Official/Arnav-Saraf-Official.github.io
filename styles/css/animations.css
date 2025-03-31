@@ -126,6 +126,78 @@
 .float {
     animation: float 3s infinite ease-in-out alternate;
 }
+
+/*Button Animations */
+.btn-glow {
+    background-color: #0a84ff;
+    color: white;
+    box-shadow: 0 0 1vh rgba(10, 132, 255, 0.7);
+}
+.btn-glow:hover {
+    background-color: #0066cc;
+    box-shadow: 0 0 2vh rgba(10, 132, 255, 1);
+}
+
+/* 2️⃣ Glassmorphism Button */
+.btn-glass {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 0.2vh solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* 3️⃣ Outline Button */
+.btn-outline {
+    background: transparent;
+    color: #7fbcff;
+    border: 0.2vh solid #7fbcff;
+}
+.btn-outline:hover {
+    background: #7fbcff;
+    color: black;
+}
+
+/* 4️⃣ Minimal Dark Button */
+.btn-dark {
+    background: rgb(15, 15, 15);
+    color: white;
+    border: 0.2vh solid #333;
+    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.4);
+}
+.btn-dark:hover {
+    background: rgb(25, 25, 25);
+    box-shadow: 0 0.8vh 1.5vh rgba(0, 0, 0, 0.5);
+}
+
+/* 5️⃣ Futuristic Button (Border Animation) */
+.btn-future {
+    position: relative;
+    background: transparent;
+    color: white;
+    border: 0.2vh solid white;
+    overflow: hidden;
+}
+.btn-future::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+.btn-future:hover::before {
+    left: 0;
+}
+
+
+
+
 @keyframes float {
     from { transform: translateY(0); }
     to { transform: translateY(-1vh); }

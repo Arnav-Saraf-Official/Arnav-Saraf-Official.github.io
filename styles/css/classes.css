@@ -27,6 +27,7 @@
 .grid { display: grid; }
 .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); }
 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+.grid3 div {height:75vh;}
 .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); }
 .gap1 { gap: 1vh; }
 .gap2 { gap: 2vh; }
@@ -73,6 +74,9 @@
 .h75 { height: 75%; }
 .h50 { height: 50%; }
 .h25 { height: 25%; }
+.h1 {height:1vh; }
+.h2 {height:2vh; }
+.h3 {height:3vh; }
 .maxw { max-width: 1200px; margin: auto; }
 
 /* Borders */

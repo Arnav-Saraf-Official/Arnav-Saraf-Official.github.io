@@ -106,9 +106,14 @@
     transform: translateX(0);
 }
 
-/* ========================= */
-/* 🎥 Advanced Effects */
-/* ========================= */
+
+.hov-tran {
+    transition: background-color 0.3s ease-in-out;
+    background-color: rgb(25, 25, 25);
+}
+.hov-tran:hover {
+    background-color: rgba(25, 25, 25, 0.1);
+}
 
 /* 🔟 Glitch Effect */
 .glitch {

@@ -4,7 +4,7 @@
     --accent-green: #5fd18c;
     --dark-bg: #191919;
     --light-text: #eaeaea;
-    --gray-bg: #303030;
+    --gray-bg: #rgb(25, 25, 25);
 }
 
 /* Flexbox */
@@ -26,8 +26,10 @@
 /* Grid */
 .grid { display: grid; }
 .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); }
-.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); }
-.grid3 div {height:75vh;}
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); transition: all 0.3s ease-in-out; }
+.grid3 div {height:75vh; transition: background-color 0.3s ease-in-out; background-color: rgb(25, 25, 25); overflow-y: scroll;}
+.grid3 div:hover {background-color: rgba(25, 25, 25, 0.75);}
+.grid3 div::-webkit-scrollbar {display: none;}
 .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); }
 .gap1 { gap: 1vh; }
 .gap2 { gap: 2vh; }
@@ -200,4 +202,21 @@
 }
 .hr-animate:hover {
     width: 100%;
+}
+
+/* Collapsible section style */
+.collapsible-section {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.8s ease-in-out;
+}
+
+/* On expanding the section, increase max-height */
+.collapsible-section.expanded {
+    max-height: 100vh; /* Adjust as necessary */
+    overflow-y: hidden;
+}
+
+.hidescroll::-webkit-scrollbar {
+    display: none;
 }

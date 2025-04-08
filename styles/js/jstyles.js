@@ -1,3 +1,5 @@
+// styles/js/jstyles.js
+
 // =========================
 // 🔹 Helper Function: Random Color Generator
 // =========================
@@ -6,15 +8,13 @@ function getRandomColor() {
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
-// =========================
-// 🔥 Hover Effects (Unified Colors)
-// =========================
-
 document.querySelectorAll("[class*='js-']").forEach(el => {
     el.addEventListener("mouseenter", () => {
         let unifiedColor = getRandomColor();
         let secondaryColor = getRandomColor(); // For gradients or secondary effects
+        el.style.transition = "all 0.3s ease-in-out";
 
+        // Hover effects based on specific classes
         if (el.classList.contains("js-bg-hover")) {
             el.style.backgroundColor = unifiedColor;
         }
@@ -28,22 +28,57 @@ document.querySelectorAll("[class*='js-']").forEach(el => {
             el.style.textShadow = `0px 0px 10px ${unifiedColor}`;
         }
         if (el.classList.contains("js-gradient-hover")) {
-            el.style.background = `linear-gradient(45deg, ${unifiedColor}, ${secondaryColor})`;
+            if (!el.gradientEl) {
+                el.gradientEl = document.createElement('div');
+                el.gradientEl.style.position = 'absolute';
+                el.gradientEl.style.top = '0';
+                el.gradientEl.style.left = '0';
+                el.gradientEl.style.width = '100%';
+                el.gradientEl.style.height = '100%';
+                el.gradientEl.style.opacity = '0';
+                el.gradientEl.style.transition = 'opacity 0.3s ease-in-out';
+                el.appendChild(el.gradientEl);
+            }
+            let unifiedColor = getRandomColor();
+            let secondaryColor = getRandomColor();
+            el.gradientEl.style.background = `linear-gradient(45deg, ${unifiedColor}, ${secondaryColor})`;
+            el.gradientEl.style.opacity = '1';
+        }
+        if (el.classList.contains("js-text-color")) {
+            el.style.color = unifiedColor; // Make sure the color is applied
+        }
+        if (el.classList.contains("js-outline")) {
+            el.style.backgroundColor = unifiedColor;
+            el.style.boxShadow = `0 0 10px ${unifiedColor}`;
         }
     });
 
     el.addEventListener("mouseleave", () => {
-        el.style.backgroundColor = "";
-        el.style.boxShadow = "none";
-        el.style.color = "";
-        el.style.textShadow = "none";
-        el.style.background = "";
+        // Reset styles to default on mouse leave
+        if (el.classList.contains("js-bg-hover")) {
+            el.style.backgroundColor = "";
+        }
+        if (el.classList.contains("js-border-pulse")) {
+            el.style.boxShadow = "none";
+        }
+        if (el.classList.contains("js-color-swap")) {
+            el.style.color = "";
+        }
+        if (el.classList.contains("js-text-glow")) {
+            el.style.textShadow = "none";
+        }
+        if (el.classList.contains("js-gradient-hover")) {
+            el.gradientEl.style.opacity = '0';
+        }
+        if (el.classList.contains("js-text-color")) {
+            el.style.color = "";
+        }
+        if (el.classList.contains("js-outline")) {
+            el.style.backgroundColor = "";
+            el.style.boxShadow = "none";
+        }
     });
 });
-
-// =========================
-// 🎨 Dynamic Button Styles
-// =========================
 
 document.querySelectorAll(".js-btn-outline").forEach(el => {
     let loopColor = getRandomColor(); // Initialize with a random color
@@ -64,7 +99,7 @@ document.querySelectorAll(".js-btn-outline").forEach(el => {
     // Add event listeners for mouseenter and mouseleave
     el.addEventListener("mouseenter", () => {
         el.style.backgroundColor = loopColor;
-        el.style.color = "inherit"; // Corrected to use a string
+        el.style.color = "inherit"; // Corrected to use 'inherit'
         el.style.borderColor = loopColor;
     });
 

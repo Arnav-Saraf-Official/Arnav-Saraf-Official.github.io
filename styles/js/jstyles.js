@@ -28,21 +28,9 @@ document.querySelectorAll("[class*='js-']").forEach(el => {
             el.style.textShadow = `0px 0px 10px ${unifiedColor}`;
         }
         if (el.classList.contains("js-gradient-hover")) {
-            if (!el.gradientEl) {
-                el.gradientEl = document.createElement('div');
-                el.gradientEl.style.position = 'absolute';
-                el.gradientEl.style.top = '0';
-                el.gradientEl.style.left = '0';
-                el.gradientEl.style.width = '100%';
-                el.gradientEl.style.height = '100%';
-                el.gradientEl.style.opacity = '0';
-                el.gradientEl.style.transition = 'opacity 0.3s ease-in-out';
-                el.appendChild(el.gradientEl);
-            }
-            let unifiedColor = getRandomColor();
-            let secondaryColor = getRandomColor();
-            el.gradientEl.style.background = `linear-gradient(45deg, ${unifiedColor}, ${secondaryColor})`;
-            el.gradientEl.style.opacity = '1';
+            el.style.background = `linear-gradient(45deg, ${unifiedColor}, ${secondaryColor})`;
+            el.style.backgroundSize = "200% 200%"; // Optional for subtle motion
+            el.style.backgroundPosition = "center";
         }
         if (el.classList.contains("js-text-color")) {
             el.style.color = unifiedColor; // Make sure the color is applied
@@ -68,7 +56,7 @@ document.querySelectorAll("[class*='js-']").forEach(el => {
             el.style.textShadow = "none";
         }
         if (el.classList.contains("js-gradient-hover")) {
-            el.gradientEl.style.opacity = '0';
+            el.style.background = `rgb(25, 25, 25)`;
         }
         if (el.classList.contains("js-text-color")) {
             el.style.color = "";

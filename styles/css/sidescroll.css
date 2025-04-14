@@ -7,15 +7,13 @@
     scroll-behavior: smooth;
     gap: 2vw;
     padding: 2vh 3vw;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    
+    
     height: auto; /* Allow height to adjust to content */
 }
 
 /* Hide Scrollbar for Webkit Browsers */
-.sidescrolljs::-webkit-scrollbar {
-    display: none;
-}
+
 
 /* Style for individual panels */
 .sidescrolljs > div {

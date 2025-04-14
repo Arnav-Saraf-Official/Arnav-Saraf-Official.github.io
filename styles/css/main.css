@@ -1,322 +1,295 @@
 /* Box sizing rules */
+@import url('/styles/css/classes.css');
+
 *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  
-  /* Prevent font size inflation */
-  html {
-    -moz-text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
-  }
-  
-  /* Remove default margin in favour of better control in authored CSS */
-  body, h1, h2, h3, h4, p,
-  figure, blockquote, dl, dd {
-    margin-block-end: 0;
-  }
-  
-  /* Remove list styles on ul, ol elements with a list role */
-  ul[role='list'],
-  ol[role='list'] {
-    list-style: none;
-  }
-  
-  /* Set core body defaults */
-  body {
-    min-height: 100vh;
-    line-height: 1.5;
-    margin: 0;
-    padding: 0;
-    font-family: 'Lexend', sans-serif;
-    color: white;
-    background: rgb(25, 25, 25);
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Set shorter line heights on headings and interactive elements */
-  h1, h2, h3, h4,
-  button, input, label {
-    line-height: 1.1;
-  }
-  
-  /* Balance text wrapping on headings */
-  h1, h2,
-  h3, h4 {
-    text-wrap: balance;
-  }
-  
-  /* A elements that don't have a class get default styles */
-  a:not([class]) {
-    text-decoration-skip-ink: auto;
-    color: currentColor;
-  }
-  
-  /* Make images easier to work with */
-  img,
-  picture {
-    max-width: 100%;
-    display: block;
-  }
-  
-  /* Inherit fonts for inputs and buttons */
-  input, button,
-  textarea, select {
-    font-family: inherit;
-    font-size: inherit;
-  }
-  
-  /* Make sure textareas without a rows attribute are not tiny */
-  textarea:not([rows]) {
-    min-height: 10em;
-  }
-  
-  /* Anything that has been anchored to should have extra scroll margin */
-  :target {
-    scroll-margin-block: 5ex;
-  }
-  
-  /* Navigation styles */
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lexend', sans-serif;
+  color: white;
+  background: rgb(25, 25, 25);
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
 /* Navigation styles */
 #navigation {
-    width: 100%;
-    height: 8vh;
-    color: white;
-    background: rgb(25, 25, 25);
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: center;
-    position: relative;
+  width: 100%;
+  height: 8vh;
+  color: white;
+  background: rgb(25, 25, 25);
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  position: relative;
 }
 
 /* Navigation button styles */
 .nav-button {
-    position: relative;
-    padding: 10px 20px;
-    color: white;
-    font-size: 1.2rem;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 400;
-    letter-spacing: 1.5px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    overflow: hidden;
+  position: relative;
+  padding: 10px 20px;
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 /* Hover Effect */
 .nav-button:hover {
-    color: #7fbcff;
-    background-color: rgb(15, 15, 15);
+  color: #7fbcff;
+  background-color: rgb(15, 15, 15);
 }
 
 /* Underline Animation */
 .nav-button::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: #7fbcff;
-    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #7fbcff;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
 }
 
 /* Hover effect on underline animation */
 .nav-button:hover::after {
-    width: 100%;
-    left: 0;
+  width: 100%;
+  left: 0;
 }
 
 /* For the current page link */
 #current-page {
-    color: white;
-    background-color: rgb(15, 15, 15);
-    position: relative;
+  color: white;
+  background-color: rgb(15, 15, 15);
+  position: relative;
 }
 
 /* Add white underline for current page */
 #current-page::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: white;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: white;
 }
 
-  
-
-  
-  /* Title container */
-  #title-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 50vh;
-    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-    overflow: hidden;
-  }
-  
-  /* Star styles */
-  .stars {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-  
-  #stars {
-    width: 1px;
-    height: 1px;
-    animation: animStar 50s linear infinite;
-  }
-  
-  #stars2 {
-    width: 2px;
-    height: 2px;
-    animation: animStar 100s linear infinite;
-  }
-  
-  #stars3 {
-    width: 3px;
-    height: 3px;
-    animation: animStar 150s linear infinite;
-  }
-  
-  /* Title */
-  #title {
-    color: #FFF;
-    text-align: center;
-    font-size: clamp(6vh, 10vw, 12vh);
-    font-weight: 300;
-    letter-spacing: clamp(5px, 1vw, 15px);
-    max-width: 90%;
-  }
-  
-  #title span {
-    background: -webkit-linear-gradient(white, #6c869f);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  /* Main content section */
-  #content {
-    width: 100%;
-    background: rgb(25, 25, 25);
-    font-size: 20px;
-    padding: 50px;
-    display: block;
-    box-sizing: border-box;
-    text-align: left;
-    margin: 0 auto;
-    max-width: 1200px;
-    flex-shrink: 0;
-    min-height: 0;
-  }
-  
-  /* Heading 1 Style (Welcome) */
-  #content h1 {
-    font-size: clamp(3rem, 8vw, 5rem);
-    color: #7fbcff;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  
-  /* Heading 2 Style */
-  #content h2 {
-    font-size: 2.2rem;
-    color: white;
-    font-weight: 600;
-    margin: 30px 0 15px 0;
-    text-align: left;
-    letter-spacing: 1px;
-  }
-  
-  /* Paragraph Style */
-  #content p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    max-width: 800px;
-    text-align: left;
-    margin-bottom: 30px;
-    color: #d1d1d1;
-  }
-  
-  /* Border between sections */
-  #content h2 + p {
-    border-top: 1px solid #444;
-    padding-top: 30px;
-    margin-top: 30px;
-  }
-  
-  /* Star animations */
-  @keyframes animStar {
-    from { transform: translateY(0); }
-    to { transform: translateY(-2000px); }
-  }
-
-  /* Custom scrollbar styles */
-.sidescrolljs::-webkit-scrollbar {
-  width: 12px;  /* Set the width of the scrollbar */
-  height: 12px; /* Set the height of the scrollbar (for horizontal scroll) */
+/* Title container */
+#title-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50vh;
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  overflow: hidden;
 }
 
-/* Track (background) */
-.sidescrolljs::-webkit-scrollbar-track {
-  background: #333;  /* Dark background color */
-  border-radius: 10px; /* Round the edges of the scrollbar */
+/* Star styles */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
-/* Handle (thumb) */
-.sidescrolljs::-webkit-scrollbar-thumb {
-  background-color: #ff6b6b;  /* Vibrant color matching your theme */
-  border-radius: 10px;  /* Rounded corners for the thumb */
-  border: 2px solid #fff;  /* White border around the thumb */
-  transition: background-color 0.3s ease;  /* Smooth color transition */
+#stars {
+  width: 1px;
+  height: 1px;
+  animation: animStar 50s linear infinite;
 }
 
-/* Handle (thumb) on hover */
-.sidescrolljs::-webkit-scrollbar-thumb:hover {
-  background-color: #ff3d3d;  /* Slightly darker red on hover */
+#stars2 {
+  width: 2px;
+  height: 2px;
+  animation: animStar 100s linear infinite;
 }
 
-/* Handle (thumb) on active click */
-.sidescrolljs::-webkit-scrollbar-thumb:active {
-  background-color: #ff0000;  /* A deep red when the user clicks on the scrollbar */
+#stars3 {
+  width: 3px;
+  height: 3px;
+  animation: animStar 150s linear infinite;
 }
 
-/* Scrollbar corner (where horizontal and vertical bars meet) */
-.sidescrolljs::-webkit-scrollbar-corner {
-  background: #333;
+/* Title */
+#title {
+  color: #FFF;
+  text-align: center;
+  font-size: clamp(6vh, 10vw, 12vh);
+  font-weight: 500;
+  font-family: 'Lexend', sans-serif;
+  letter-spacing: clamp(5px, 1vw, 15px);
+  max-width: 90%;
 }
 
-/* Custom scrollbar styles for horizontal scroll */
-.sidescrolljs::-webkit-scrollbar-horizontal {
-  height: 10px;  /* Adjust the height for horizontal scroll */
+
+#title span {
+  background: -webkit-linear-gradient(white, #6c869f);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.sidescrolljs::-webkit-scrollbar-thumb-horizontal {
-  background-color: #ff6b6b;
+/* Main content section */
+#content {
+  width: 100%;
+  background: rgb(25, 25, 25);
+  font-size: 20px;
+  padding: 50px;
+  display: block;
+  box-sizing: border-box;
+  text-align: left;
+  margin: 0 auto;
+  max-width: 1200px;
+  flex-shrink: 0;
+  min-height: 0;
+}
+
+/* Heading 1 Style (Welcome) */
+#content h1 {
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: #7fbcff;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Heading 2 Style */
+#content h2 {
+  font-size: 2.2rem;
+  color: white;
+  font-weight: 600;
+  margin: 30px 0 15px 0;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+/* Paragraph Style */
+#content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 800px;
+  text-align: left;
+  margin-bottom: 30px;
+  color: #d1d1d1;
+}
+
+/* Border between sections */
+#content h2 + p {
+  border-top: 1px solid #444;
+  padding-top: 30px;
+  margin-top: 30px;
+}
+
+/* Star animations */
+@keyframes animStar {
+  from { transform: translateY(0); }
+  to { transform: translateY(-2000px); }
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(30, 30, 30);
   border-radius: 10px;
-  border: 2px solid #fff;
 }
 
-/* Hover effects for horizontal scrollbar thumb */
-.sidescrolljs::-webkit-scrollbar-thumb-horizontal:hover {
-  background-color: #ff3d3d;
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7fbcff, #5fd18c);
+  border-radius: 10px;
+  border: 2px solid rgb(30, 30, 30);
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #5fd18c, #ffcb74);
+}
+
+::-webkit-scrollbar-corner {
+  background: rgb(30, 30, 30);
+}

@@ -9,26 +9,32 @@
       <link rel="stylesheet" href="../styles/css/animations.css">
       <link rel="stylesheet" href="../styles/css/jshelper.css">
       <link rel="stylesheet" href="../styles/css/sidescroll.css">
+
+      <script src="https://unpkg.com/lucide@latest"></script>
    </head>
    <body>
       <!-- Navigation Bar -->
       <header id="navigation">
-         <a href="home.html" class="nav-button" >
-            <section>Home 🏠︎</section>
+         <a href="home.html" class="nav-button">
+             <section><i data-lucide="home" class="icon"></i>Home</section>
          </a>
          <a href="about.html" class="nav-button">
-            <section>About ✦</section>
+             <section><i data-lucide="user" class="icon"></i>About</section>
          </a>
-         <a href="portfolio.html" class="nav-button" id="current-page">
-            <section>Portfolio 🖿</section>
+         <a href="portfolio.html" class="nav-button">
+             <section><i data-lucide="briefcase" class="icon"></i>Portfolio</section>
          </a>
-      </header>
+         <a href="news.html" class="nav-button" id="current-page">
+             <section><i data-lucide="newspaper" class="icon"></i>News</section>
+         </a>
+     </header>
+     
       <!-- Hero Section -->
       <section id="title-container">
          <div class="stars" id="stars"></div>
          <div class="stars" id="stars2"></div>
          <div class="stars" id="stars3"></div>
-         <div id="title">
+         <div id="title" class="float ani-slow pulse">
             <span>Hi there,</span><br>
             <span>Check out my Portfolio</span>
          </div>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arnav's News</title>
+    <link rel="stylesheet" href="../styles/css/main.css">
+    <link rel="stylesheet" href="../styles/css/classes.css">
+    <link rel="stylesheet" href="../styles/css/animations.css">
+    <link rel="stylesheet" href="../styles/css/jshelper.css">
+    <link rel="stylesheet" href="../styles/css/sidescroll.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header id="navigation">
+        <a href="home.html" class="nav-button">
+            <section><i data-lucide="home" class="icon"></i>Home</section>
+        </a>
+        <a href="about.html" class="nav-button">
+            <section><i data-lucide="user" class="icon"></i>About</section>
+        </a>
+        <a href="portfolio.html" class="nav-button">
+            <section><i data-lucide="briefcase" class="icon"></i>Portfolio</section>
+        </a>
+        <a href="news.html" class="nav-button" id="current-page">
+            <section><i data-lucide="newspaper" class="icon"></i>News</section>
+        </a>
+    </header>
+    
+
+    <!-- Hero Section -->
+    <section id="title-container">
+        <div class="stars" id="stars"></div>
+        <div class="stars" id="stars2"></div>
+        <div class="stars" id="stars3"></div>
+        <div id="title" class="float ani-slow pulse">
+            <span>Whatever that is </span><br>
+            <span>going on in my life</span>
+        </div>
+    </section>
+    <hr class="hr-double">
+
+    <!-- News Section -->
+<div id="content" class="p4">
+    <h2 class="txtc mb3">Latest Updates & News</h2>
+
+    <div class="grid2 gap4">
+
+        <!-- News Panel 1 -->
+<div class="news-panel card br2 shadow">
+    <button class="close-btn news-close" aria-label="Close news panel">&times;</button>
+    <div class="hover-zone p3 br2 hov-lift">
+        <div class="prev">
+            <h3>Science Fair Success 🧪</h3>
+            <p class="txts opacity-70">April 10, 2025</p>
+            <p>
+                My landslide prediction project was selected for the regional science fair finals! It uses machine learning and remote sensing to predict disaster risk.
+            </p>
+            <button class="btn btn-future txtdcn mt2 read-more-btn">Read More</button>
+        </div>
+
+        <div class="full p4">
+            <h3>Science Fair Success 🧪</h3>
+            <p class="txts opacity-70 mb2">April 10, 2025</p>
+            <p>
+                After months of coding, modeling, and data collection, my project on landslide prediction using AI made it to the regional science fair finals! It leverages convolutional neural networks for analyzing topographic features and XGBoost for rainfall data. The results were surprisingly accurate and I'm excited to present them to a broader audience soon.
+            </p>
+            <p>Thanks to everyone who helped and encouraged me throughout the process!</p>
+            <a href="portfolio.html#landslide" class="btn btn-future txtdcn mt2">Go to Project</a>
+            
+        </div>
+    </div>
+</div>
+
+<!-- News Panel 2 -->
+<div class="news-panel card br2 shadow">
+    <div class="hover-zone p3 br2 hov-lift">
+        <div class="prev">
+            <h3>Website Redesign 🚀</h3>
+            <p class="txts opacity-70">March 25, 2025</p>
+            <p>
+                Just launched a full redesign of my website using a custom CSS framework and lots of cool animations. Hope you like the look!
+            </p>
+            <button class="btn btn-future txtdcn mt2 read-more-btn">Read More</button>
+        </div>
+
+        <div class="full p4">
+            <h3>Website Redesign 🚀</h3>
+            <p class="txts opacity-70 mb2">March 25, 2025</p>
+            <p>
+                I completely redesigned my personal site with a custom-built CSS framework. It now supports animations, hover effects, and dynamic layout changes. I focused on performance, accessibility, and a modern aesthetic while keeping everything mobile-friendly.
+            </p>
+            <p>Let me know what you think, and feel free to explore the source code!</p>
+            <a href="about.html#site" class="btn btn-future txtdcn mt2">See More</a>
+            <button class="btn btn-dark mt2 close-btn">Close</button>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    <hr class="hr-double">
+
+    <!-- Footer -->
+    <footer class="flexcol alignc p4 wv100 footer-bg br2">
+        <h5 class="txtl m0 pulse">Let's Connect</h5>
+        <p class="txtm txtc w75 mb2">Feel free to reach out for any questions or feedback!</p>
+
+        <div class="flexr gap4">
+            <a class="txtdcn btn btn-dark flexc p2 hov-scale hov-doubleline" href="https://github.com/Arnav-Saraf-Official">
+                <img src="../assets/github-mark.svg" class="wv3 invert" alt="GitHub Logo">
+                <span>GitHub</span>
+            </a>
+            <a class="txtdcn btn btn-dark flexc p2 hov-scale hov-doubleline" href="mailto:reacharnavsaraf@gmail.com">
+                <img src="../assets/email.svg" class="wv3 invert" alt="Email Icon">
+                <span>Email</span>
+            </a>
+        </div>
+
+        <p class="txts mt3 opacity-50">&copy; 2025 Arnav Saraf. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../styles/js/stars.js"></script>
+    <script src="../styles/js/jstyles.js"></script>
+    <script src="../js/side-scroll.js"></script>
+</body>
+</html>

@@ -204,7 +204,6 @@ textarea:not([rows]) {
   max-width: 90%;
 }
 
-
 #title span {
   background: -webkit-linear-gradient(white, #6c869f);
   background-clip: text;
@@ -292,4 +291,92 @@ textarea:not([rows]) {
 
 ::-webkit-scrollbar-corner {
   background: rgb(30, 30, 30);
+}
+
+/* Base state */
+/* Popup backdrop */
+.popup-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 15, 0.6);
+  backdrop-filter: blur(6px);
+  z-index: 900;
+  display: none;
+}
+
+/* Popup content */
+.news-panel.expanded {
+  position: fixed;
+  top: 5vh;
+  left: 5vw;
+  width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  z-index: 1000;
+
+  background: var(--popup-bg, #0a0a0f);
+  color: var(--popup-txt, #ffffff);
+  border: 2px solid var(--accent, #00ffc3);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 40px rgba(0, 255, 200, 0.3);
+  animation: popupFadeIn 0.3s ease forwards;
+}
+
+/* Hide preview when expanded */
+.news-panel.expanded .prev {
+  display: none;
+}
+
+/* Show full content */
+.news-panel .full {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.news-panel.expanded .full {
+  display: block;
+  opacity: 1;
+}
+
+/* Close button styles */
+.news-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #00ffc3;
+  cursor: pointer;
+  z-index: 1001;
+  transition: color 0.3s ease;
+}
+
+.news-close:hover {
+  color: #ff3c3c;
+}
+
+/* Smooth appearance */
+@keyframes popupFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+body.lock-scroll {
+  overflow: hidden;
+}
+.icon {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.5em;
+  vertical-align: middle;
+  stroke-width: 2;
 }

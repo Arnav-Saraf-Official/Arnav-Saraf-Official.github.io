@@ -97,3 +97,5 @@ document.querySelectorAll(".js-btn-outline").forEach(el => {
         el.style.borderColor = loopColor;
     });
 });
+
+lucide.createIcons();

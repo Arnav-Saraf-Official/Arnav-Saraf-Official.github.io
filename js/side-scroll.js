@@ -30,3 +30,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
     
+
+
+document.querySelectorAll('.read-more-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const panel = btn.closest('.news-panel');
+    
+    // Add backdrop
+    let backdrop = document.createElement('div');
+    backdrop.classList.add('popup-backdrop');
+    document.body.appendChild(backdrop);
+    backdrop.style.display = 'block';
+
+    panel.classList.add('expanded');
+    document.body.classList.add('lock-scroll');
+
+    // Close on backdrop click
+    backdrop.addEventListener('click', () => {
+      panel.classList.remove('expanded');
+      document.body.classList.remove('lock-scroll');
+      backdrop.remove();
+    });
+  });
+});
+
+document.querySelectorAll('.close-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const panel = btn.closest('.news-panel');
+    panel.classList.remove('expanded');
+    document.body.classList.remove('lock-scroll');
+    document.querySelector('.popup-backdrop')?.remove();
+  });
+});
+
+
+  

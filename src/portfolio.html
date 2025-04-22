@@ -1,102 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Arnav's Website</title>
-      <link rel="stylesheet" href="../styles/css/main.css">
-      <link rel="stylesheet" href="../styles/css/classes.css">
-      <link rel="stylesheet" href="../styles/css/animations.css">
-      <link rel="stylesheet" href="../styles/css/jshelper.css">
-      <link rel="stylesheet" href="../styles/css/sidescroll.css">
-
-      <script src="https://unpkg.com/lucide@latest"></script>
-   </head>
-   <body>
-      <!-- Navigation Bar -->
-      <header id="navigation">
-         <a href="home.html" class="nav-button">
-             <section><i data-lucide="home" class="icon"></i>Home</section>
-         </a>
-         <a href="about.html" class="nav-button">
-             <section><i data-lucide="user" class="icon"></i>About</section>
-         </a>
-         <a href="portfolio.html" class="nav-button" id="current-page">
-             <section><i data-lucide="briefcase" class="icon"></i>Portfolio</section>
-         </a>
-         <a href="news.html" class="nav-button" >
-             <section><i data-lucide="newspaper" class="icon"></i>News</section>
-         </a>
-     </header>
-     
-      <!-- Hero Section -->
-      <section id="title-container">
-         <div class="stars" id="stars"></div>
-         <div class="stars" id="stars2"></div>
-         <div class="stars" id="stars3"></div>
-         <div id="title" class="float ani-slow pulse">
-            <span>I suppose you want to</span><br>
-            <span>Check out my Portfolio</span>
-         </div>
-      </section>
-      <hr class="hr-double">
-      <div id="content">
-
-<div id="content1" class="flexcol alignc">
-    <h2>Science Fair Achievements</h2>
-    <button class="btn js-btn-outline p2 m2" onclick="toggleSection('content1')">Learn More</button>
-
-    <!-- Collapsible Section -->
-    <div id="collapsibleSection1" class="collapsible-section js-gradient-hover">
-        <section class="grid3 gap4 p3 hidescroll" style=" overflow-y: auto; max-height: 80vh; scroll-snap-type: y mandatory; border:#5fd18c solid">
-            
-            <div class="flexcol alignc p3 br2 hov-lift hov-tran" style="scroll-snap-align: start;">
-                <img src="/assets/sci22.svg" class="invert h50">
-                <h3>Science Fair 2022-2023</h3>
-                <h5 class="txtc">"Effect of Winglet Angle on Drag" - 3rd Place GARSEF</h5>
-                <a class="btn js-btn-outline p2 m2">Learn More</a>
-            </div>
-
-            <div class="flexcol alignc p3 br2 hov-glow hov-lift" style="scroll-snap-align: start;">
-                <img src="/assets/sci23.svg" class="invert h50">
-                <h3>Science Fair 2023-2024</h3>
-                <h5 class="txtc">"Unveiling Harmonics: An Exploration of Hidden Notes in Tanpura" - 1st Place GARSEF - 3rd Place TXSEF</h5>
-                <a class="btn js-btn-outline p2 m2">Learn More</a>
-            </div>
-
-            <div class="flexcol alignc p3 br2 hov-glow hov-lift" style="scroll-snap-align: start;">
-                <img src="/assets/sci24.svg" class="invert h50">
-                <h3>Science Fair 2024-2025</h3>
-                <h5 class="txtc">"Ground Truth: A Novel Approach for Landslide Prediction with a Deep Learning Framework" - 1st Place GARSEF - 1st Place TXSEF</h5>
-                <a class="btn js-btn-outline p2 m2">Learn More</a>
-            </div> 
-        </section>
-    </div>
-    
-</div>
-
-      </div>
-      <hr class="hr-double">
-      <footer class="flexcol alignc p4 wv100 footer-bg br2">
-         <h5 class="txtl m0 pulse">
-         Let's Connect</h3>
-         <p class="txtm txtc w75 mb2">Feel free to reach out for any questions!</p>
-         <div class="flexr gap4">
-            <a class="txtdcn btn btn-dark flexc p2 hov-scale hov-doubleline" href="https://github.com/Arnav-Saraf-Official">
-            <img src="../assets/github-mark.svg" class="wv3 invert" alt="GitHub Logo">
-            <span>GitHub</span>
-            </a>
-            <a class="txtdcn btn btn-dark flexc p2 hov-scale hov-doubleline" href="mailto:reacharnavsaraf@gmail.com">
-            <img src="../assets/email.svg" class="wv3 invert" alt="Email Icon">
-            <span>Email</span>
-            </a>
-         </div>
-         <p class="txts mt3 opacity-50">&copy; 2025 Arnav Saraf. All rights reserved.</p>
-      </footer>
-      <!-- JavaScript -->
-      <script src="/styles/js/stars.js"></script>
-      <script src="/styles/js/jstyles.js"></script>
-      <script src="/js/side-scroll.js"></script>
-      <script src="/js/collapse.js"></script>
-   </body>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Arnav's Website</title>
+		<link rel="stylesheet" href="../styles/css/main.css">
+		<link rel="stylesheet" href="../styles/css/classes.css">
+		<link rel="stylesheet" href="../styles/css/animations.css">
+		<link rel="stylesheet" href="../styles/css/jshelper.css">
+		<link rel="stylesheet" href="../styles/css/sidescroll.css">
+		<script src="https://unpkg.com/lucide@latest"></script>
+	</head>
+	<body>
+		<!-- Navigation Bar -->
+		<header id="navigation">
+			<a href="home.html" class="nav-button">
+				<section><i data-lucide="home" class="icon"></i>Home</section>
+			</a>
+			<a href="about.html" class="nav-button">
+				<section><i data-lucide="user" class="icon"></i>About</section>
+			</a>
+			<a href="portfolio.html" class="nav-button" id="current-page">
+				<section><i data-lucide="briefcase" class="icon"></i>Portfolio</section>
+			</a>
+			<a href="news.html" class="nav-button" >
+				<section><i data-lucide="newspaper" class="icon"></i>News</section>
+			</a>
+		</header>
+		<!-- Hero Section -->
+		<section id="title-container">
+			<div class="stars" id="stars"></div>
+			<div class="stars" id="stars2"></div>
+			<div class="stars" id="stars3"></div>
+			<div id="title" class="float ani-slow pulse">
+				<span>My Achivements and</span>
+				<span>Portfolio</span>
+			</div>
+		</section>
+		<hr class="hr-double">
+		<div id="content">
+			<div id="content1" class="flexcol alignc">
+				<h2>Science Fair Achievements</h2>
+				<button class="btn js-btn-outline p2 m2" onclick="toggleSection('content1')">Learn More</button>
+				<!-- Collapsible Section -->
+				<div id="collapsibleSection1" class="collapsible-section js-gradient-hover">
+					<section class="grid3 gap4 p3 hidescroll" style=" overflow-y: auto; max-height: 80vh; scroll-snap-type: y mandatory; border:#5fd18c solid">
+						<div class="flexcol alignc p3 br2 hov-lift hov-tran" style="scroll-snap-align: start;">
+							<img src="/assets/sci22.svg" class="invert h50">
+							<h3>Science Fair 2022-2023</h3>
+							<h5 class="txtc">"Effect of Winglet Angle on Drag" - 3rd Place GARSEF</h5>
+							<a class="btn js-btn-outline p2 m2">Learn More</a>
+						</div>
+						<div class="flexcol alignc p3 br2 hov-glow hov-lift" style="scroll-snap-align: start;">
+							<img src="/assets/sci23.svg" class="invert h50">
+							<h3>Science Fair 2023-2024</h3>
+							<h5 class="txtc">"Unveiling Harmonics: An Exploration of Hidden Notes in Tanpura" - 1st Place GARSEF - 3rd Place TXSEF</h5>
+							<a class="btn js-btn-outline p2 m2">Learn More</a>
+						</div>
+						<div class="flexcol alignc p3 br2 hov-glow hov-lift" style="scroll-snap-align: start;">
+							<img src="/assets/sci24.svg" class="invert h50">
+							<h3>Science Fair 2024-2025</h3>
+							<h5 class="txtc">"Ground Truth: A Novel Approach for Landslide Prediction with a Deep Learning Framework" - 1st Place GARSEF - 1st Place TXSEF</h5>
+							<a class="btn js-btn-outline p2 m2">Learn More</a>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+		<hr class="hr-double">
+		<footer class="flexcol alignc p4 wv100 footer-bg br2">
+			<h5 class="txtm m0 pulse">
+			Let's Connect</h3>
+			<p class="txts txtc w75 mb2">Feel free to reach out for any questions!</p>
+			<div class="flexr gap4">
+				<a class="txtdcn btn btn-dark flexc p2 hov-scale hov-doubleline" href="https://github.com/Arnav-Saraf-Official">
+				<img src="../assets/github-mark.svg" class="wv3 invert" alt="GitHub Logo">
+				<span>GitHub</span>
+				</a>
+				<a class="txtdcn btn btn-dark flexc p2 hov-scale hov-doubleline" href="mailto:reacharnavsaraf@gmail.com">
+				<img src="../assets/email.svg" class="wv3 invert" alt="Email Icon">
+				<span>Email</span>
+				</a>
+			</div>
+			<p class="txts mt3 opacity-50">&copy; 2025 Arnav Saraf. All rights reserved.</p>
+		</footer>
+		<!-- JavaScript -->
+		<script src="/styles/js/stars.js"></script>
+		<script src="/styles/js/jstyles.js"></script>
+		<script src="/js/side-scroll.js"></script>
+		<script src="/js/collapse.js"></script>
+	</body>
 </html>

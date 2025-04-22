@@ -43,10 +43,10 @@
 .bold { font-weight: bold; }
 .italic { font-style: italic; }
 .uline { text-decoration: underline; }
-.txts { font-size: clamp(1.2vh, 1.2vw, 2vh); }
-.txtm { font-size: clamp(2vh, 2vw, 3vh); }
-.txtl { font-size: clamp(3vh, 3vw, 4vh); }
-.txthuge { font-size: clamp(5vh, 5vw, 7vh); }
+.txts { font-size: 1.2vw; }
+.txtm { font-size: 2vw; }
+.txtl { font-size: 3vw; }
+.txthuge { font-size: 5vw; }
 .txtdcn { text-decoration: none; }
 
 /* Margin & Padding (Scaled to Viewport) */
@@ -214,7 +214,7 @@
 /* On expanding the section, increase max-height */
 .collapsible-section.expanded {
     max-height: 100vh; /* Adjust as necessary */
-    overflow-y: hidden;
+    overflow-y: scroll;
 }
 
 .hidescroll::-webkit-scrollbar {

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Arnav's News</title>
+		<link rel="stylesheet" href="../styles/css/main.css">
+		<link rel="stylesheet" href="../styles/css/classes.css">
+		<link rel="stylesheet" href="../styles/css/animations.css">
+		<link rel="stylesheet" href="../styles/css/jshelper.css">
+		<link rel="stylesheet" href="../styles/css/sidescroll.css">
+		<script src="https://unpkg.com/lucide@latest"></script>
+	</head>
+	<body>
+		<!-- Navigation Bar -->
+		<header id="navigation">
+			<a href="home.html" class="nav-button">
+				<section><i data-lucide="home" class="icon"></i>Home</section>
+			</a>
+			<a href="about.html" class="nav-button">
+				<section><i data-lucide="user" class="icon"></i>About</section>
+			</a>
+			<a href="portfolio.html" class="nav-button">
+				<section><i data-lucide="briefcase" class="icon"></i>Portfolio</section>
+			</a>
+			<a href="news.html" class="nav-button" id="current-page">
+				<section><i data-lucide="newspaper" class="icon"></i>News</section>
+			</a>
+		</header>
+		<!-- Hero Section -->
+		<section id="title-container">
+			<div class="stars" id="stars"></div>
+			<div class="stars" id="stars2"></div>
+			<div class="stars" id="stars3"></div>
+			<div id="title" class="float ani-slow pulse">
+				<span>Whatever that is </span><br>
+				<span>going on in my life</span>
+			</div>
+		</section>
+		<hr class="hr-double">
+		<!-- News Section -->
+		<div id="content1" class="p3 content flexcol alignc br3" style="background-color: rgb(15, 15, 15);">
+			<h2>STEM Projects</h2>
+			<button class="btn js-btn-outline p2 m2" onclick="toggleSection('content1')">Learn More</button>
+			<div id="collapsibleSection1" class="collapsible-section">
+				<div class="grid2 gap4">
+					<div class="news-panel card br2 shadow">
+						<div class="hover-zone p3 br2 ">
+							<div class="prev">
+								<h3>Slipsense</h3>
+								<p class="txts opacity-70">March 29, 2025</p>
+								<p>
+									Arnav Saraf won first place and received special awards for his project on landslide prediction using AI.
+								</p>
+								<button class="btn btn-future txtdcn mt2 read-more-btn">Read More</button>
+							</div>
+							<div class="full p4">
+								<button class="close-btn news-close" aria-label="Close news panel">&times;</button>
+								<h2>1st Place and Special Awards at TXSEF 2025</h2>
+								<p class="txts opacity-70 mb2">March 29, 2025</p>
+								<p>
+									After placing first in the Greater Austing Regional Science and Engineering Fair,
+									Arnav Saraf qualifyed and participated in the Texas Science and Engineering Fair at
+									Texas A&M University. The project was listed in the <i>Earth and Enviormental Sciences</i>.
+									<br>
+									Here, not only did he place first again, but also won the $500 prize from ExxonMobil. He
+									also qualifyed for blue ribbon judging in the life sciences category, however he did not
+									place. 
+								</p>
+								<p>
+									<strong>Special Awards:</strong>
+									ExxonMobil Special Award - $500
+								</p>
+								<a class="js-btn-outline btn txtdcn" href="projects.html">
+								Learn more about the project
+								</a>
+								<h3>Evening Highlights</h3>
+								<div class="carousel">
+									<div class="carousel-track-container">
+										<ul class="carousel-track">
+											<li class="carousel-slide"><img src="/assets/2025-GARSEF-SHAKE.jpg" alt="Slide 1"></li>
+											<li class="carousel-slide"><img src="/assets/2025-GARSEF-HAND.jpg" alt="Slide 2"></li>
+											<li class="carousel-slide"><img src="/assets/2025-GARSEF-STAND.jpg" alt="Slide 3"></li>
+										</ul>
+									</div>
+									<button class="js-btn-outline carousel-button prev">&#10094;</button>
+									<button class="carousel-button js-btn-outline next">&#10095;</button>
+									<div class="carousel-nav">
+										<button class="carousel-indicator current-slide"></button>
+										<button class="carousel-indicator"></button>
+										<button class="carousel-indicator"></button>
+									</div>
+								</div>
+								<p>Thanks to everyone who helped and encouraged me throughout the process!</p>
+							</div>
+						</div>
+					</div>
+					<!-- News Panel 2 -->
+					<div class="news-panel card br2 shadow">
+						<div class="hover-zone p3 br2 ">
+							<div class="prev">
+								<h3>1st Place and Special Awards at GARSEF 2025</h3>
+								<p class="txts opacity-70">Febuary 20, 2025</p>
+								<p>
+									Arnav Saraf won first place and received special awards for his project on landslide prediction using AI.
+								</p>
+								<button class="btn btn-future txtdcn mt2 read-more-btn">Read More</button>
+							</div>
+							<div class="full p4">
+								<button class="close-btn news-close" aria-label="Close news panel">&times;</button>
+								<h2>1st Place and Special Awards at GARSEF 2025</h2>
+								<p class="txts opacity-70 mb2">February 20, 2025</p>
+								<p>
+									Arnav Saraf participated in GARSEF and took home multiple awards, 
+									including first place, as well as special awards for his project 
+									on landslide susceptibility prediction using AI. The project was
+									listed in the <i>Earth and Enviormental Sciences</i> category, of
+									the junior division at GARSEF. 
+								</p>
+								<p>
+									<strong>Special Awards:</strong>
+								<ul >
+									<li>Austin Geological Society Special Award - Invited for poster presentation at annual presentation meeting</li>
+									<li>National Oceanic and Atmospheric Administration Special Award</li>
+								</ul>
+								</p>
+								<a class="js-btn-outline btn txtdcn" href="projects.html">
+								Learn more about the project
+								</a>
+								<h3>Evening Highlights</h3>
+								<div class="carousel">
+									<div class="carousel-track-container">
+										<ul class="carousel-track">
+											<li class="carousel-slide"><img src="/assets/2025-GARSEF-SHAKE.jpg" alt="Slide 1"></li>
+											<li class="carousel-slide"><img src="/assets/2025-GARSEF-HAND.jpg" alt="Slide 2"></li>
+											<li class="carousel-slide"><img src="/assets/2025-GARSEF-STAND.jpg" alt="Slide 3"></li>
+										</ul>
+									</div>
+									<button class="js-btn-outline carousel-button prev">&#10094;</button>
+									<button class="carousel-button js-btn-outline next">&#10095;</button>
+									<div class="carousel-nav">
+										<button class="carousel-indicator current-slide"></button>
+										<button class="carousel-indicator"></button>
+										<button class="carousel-indicator"></button>
+									</div>
+								</div>
+								<p>Thanks to everyone who helped and encouraged me throughout the process!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr class="hr-double">
+		<!-- Footer -->
+		<footer class="flexcol alignc p4 wv100 footer-bg br2">
+			<h5 class="txtm m0 pulse">
+			Let's Connect</h3>
+			<p class="txts txtc w75 mb2">Feel free to reach out for any questions!</p>
+			<div class="flexr gap4">
+				<a class="txtdcn btn btn-dark flexc p2 hov-scale hov-doubleline" href="https://github.com/Arnav-Saraf-Official">
+				<img src="../assets/github-mark.svg" class="wv3 invert" alt="GitHub Logo">
+				<span>GitHub</span>
+				</a>
+				<a class="txtdcn btn btn-dark flexc p2 hov-scale hov-doubleline" href="mailto:reacharnavsaraf@gmail.com">
+				<img src="../assets/email.svg" class="wv3 invert" alt="Email Icon">
+				<span>Email</span>
+				</a>
+			</div>
+			<p class="txts mt3 opacity-50">&copy; 2025 Arnav Saraf. All rights reserved.</p>
+		</footer>
+		<!-- JavaScript -->
+		<script src="../styles/js/stars.js"></script>
+		<script src="../styles/js/jstyles.js"></script>
+		<script src="../js/side-scroll.js"></script>
+		<script src="../js/slideshow.js"></script>
+		<script src="../js/collapse.js"></script>
+	</body>
+</html>

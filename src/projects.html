@@ -23,8 +23,11 @@
 			<a href="portfolio.html" class="nav-button">
 				<section><i data-lucide="briefcase" class="icon"></i>Portfolio</section>
 			</a>
-			<a href="news.html" class="nav-button" id="current-page">
+			<a href="news.html" class="nav-button">
 				<section><i data-lucide="newspaper" class="icon"></i>News</section>
+			</a>
+			<a href="projects.html" class="nav-button" id="current-page">
+				<section><i data-lucide="Layout Dashboard" class="icon"></i>Projects</section>
 			</a>
 		</header>
 		<!-- Hero Section -->
@@ -33,122 +36,62 @@
 			<div class="stars" id="stars2"></div>
 			<div class="stars" id="stars3"></div>
 			<div id="title" class="float ani-slow pulse">
-				<span>Whatever that is </span><br>
-				<span>going on in my life</span>
+				<span>My Projects</span><br>
+				<span>Past and Present</Pre></span>
 			</div>
 		</section>
 		<hr class="hr-double">
 		<!-- News Section -->
 		<div id="content1" class="p3 content flexcol alignc br3" style="background-color: rgb(15, 15, 15);">
 			<h2>STEM Projects</h2>
-			
 			<div id="collapsibleSection1" class="collapsible-section">
 				<div class="grid2 gap4">
 					<div class="news-panel card br2 shadow">
 						<div class="hover-zone p3 br2 ">
 							<div class="prev">
-								<h3>Slipsense</h3>
-								<p class="txts opacity-70">Continuation of my 2025 Science Fair Project. Involves the creation of CNN models for landslide susceptibility prediction.</p>
-								
+								<h3>SlipSense 1.0</h3>
+								<p class="txts opacity-70">My 2025 Science Fair Project. Involves the creation of CNN models for landslide susceptibility prediction.</p>
 								<button class="btn btn-future txtdcn mt2 read-more-btn">Read More</button>
 							</div>
 							<div class="full p4">
 								<button class="close-btn news-close" aria-label="Close news panel">&times;</button>
-								<h2>1st Place and Special Awards at TXSEF 2025</h2>
-								<p class="txts opacity-70 mb2">March 29, 2025</p>
+								<h2>SlipSense 1.0</h2>
 								<p>
-									After placing first in the Greater Austing Regional Science and Engineering Fair,
-									Arnav Saraf qualifyed and participated in the Texas Science and Engineering Fair at
-									Texas A&M University. The project was listed in the <i>Earth and Enviormental Sciences</i>.
-									<br>
-									Here, not only did he place first again, but also won the $500 prize from ExxonMobil. He
-									also qualifyed for blue ribbon judging in the life sciences category, however he did not
-									place. 
+									This is a finished project. SlipSense is a developing framework that uses AI models in order to enhance
+									landslide Prediction.
 								</p>
+								<h3>Abstract:</h3>
 								<p>
-									<strong>Special Awards:</strong>
-									ExxonMobil Special Award - $500
+									Landslides are a significant geological hazard, causing over 4,000 fatalities and $20 billion in
+									property damage annually. This project aims to predict landslide vulnerability values using
+									advanced deep-learning techniques. A Python-based framework was developed to process diverse remote
+									sensing data, including the Normalized Difference Vegetation Index (NDVI), rainfall, slope,
+									topography, and satellite imagery, to train predictive models with high accuracy and scalability.<br>
+									Using the USGS Landslide Susceptibility Inventory, multiple CNN models were developed and optimized
+									for each geological feature. The final models achieved accuracies of 99% for satellite imagery, 98%
+									for topography, 97% for slope, and 66% for NDVI. Losses were below 0.2 for all models except NDVI,
+									which had a loss of 1.07. These results demonstrate the models' ability to accurately incorporate
+									diverse terrain and environmental factors to enhance prediction reliability. To converge the CNN
+									predictions, a final XGBoost model was developed, leveraging CNN classification outputs as input
+									features. This ensemble model achieved an impressive accuracy of 98% and a RMSE of 4.9. Validation
+									results consistently matched or exceeded training accuracies, showcasing the models' strong
+									generalization capabilities across various data types.<br>
+									Future work includes creating a multi-input CNN capable of integrating all data types
+									simultaneously for even greater precision. Additionally, an API will be developed to deliver
+									real-time, globally scalable landslide probability predictions using satellite data. This framework
+									provides a transformative approach to improving disaster risk management and reducing
+									landslide-related impacts worldwide.
 								</p>
-								<a class="js-btn-outline btn txtdcn" href="projects.html">
-								Learn more about the project
-								</a>
-								<h3>Evening Highlights</h3>
-								<div class="carousel">
-									<div class="carousel-track-container">
-										<ul class="carousel-track">
-											<li class="carousel-slide"><img src="/assets/2025-GARSEF-SHAKE.jpg" alt="Slide 1"></li>
-											<li class="carousel-slide"><img src="/assets/2025-GARSEF-HAND.jpg" alt="Slide 2"></li>
-											<li class="carousel-slide"><img src="/assets/2025-GARSEF-STAND.jpg" alt="Slide 3"></li>
-										</ul>
-									</div>
-									<button class="js-btn-outline carousel-button prev">&#10094;</button>
-									<button class="carousel-button js-btn-outline next">&#10095;</button>
-									<div class="carousel-nav">
-										<button class="carousel-indicator current-slide"></button>
-										<button class="carousel-indicator"></button>
-										<button class="carousel-indicator"></button>
-									</div>
-								</div>
+								<h3>View the Project Board Here:</h3>
+								<iframe src="/assets/SCI25BOARD.pdf" class="br3" width="100%" height="500px"style="border:none;"></iframe>
 								<p>Thanks to everyone who helped and encouraged me throughout the process!</p>
 							</div>
 						</div>
 					</div>
 					<!-- News Panel 2 -->
-					<div class="news-panel card br2 shadow">
-						<div class="hover-zone p3 br2 ">
-							<div class="prev">
-								<h3>1st Place and Special Awards at GARSEF 2025</h3>
-								<p class="txts opacity-70">Febuary 20, 2025</p>
-								<p>
-									Arnav Saraf won first place and received special awards for his project on landslide prediction using AI.
-								</p>
-								<button class="btn btn-future txtdcn mt2 read-more-btn">Read More</button>
-							</div>
-							<div class="full p4">
-								<button class="close-btn news-close" aria-label="Close news panel">&times;</button>
-								<h2>1st Place and Special Awards at GARSEF 2025</h2>
-								<p class="txts opacity-70 mb2">February 20, 2025</p>
-								<p>
-									Arnav Saraf participated in GARSEF and took home multiple awards, 
-									including first place, as well as special awards for his project 
-									on landslide susceptibility prediction using AI. The project was
-									listed in the <i>Earth and Enviormental Sciences</i> category, of
-									the junior division at GARSEF. 
-								</p>
-								<p>
-									<strong>Special Awards:</strong>
-								<ul >
-									<li>Austin Geological Society Special Award - Invited for poster presentation at annual presentation meeting</li>
-									<li>National Oceanic and Atmospheric Administration Special Award</li>
-								</ul>
-								</p>
-								<a class="js-btn-outline btn txtdcn" href="projects.html">
-								Learn more about the project
-								</a>
-								<h3>Evening Highlights</h3>
-								<div class="carousel">
-									<div class="carousel-track-container">
-										<ul class="carousel-track">
-											<li class="carousel-slide"><img src="/assets/2025-GARSEF-SHAKE.jpg" alt="Slide 1"></li>
-											<li class="carousel-slide"><img src="/assets/2025-GARSEF-HAND.jpg" alt="Slide 2"></li>
-											<li class="carousel-slide"><img src="/assets/2025-GARSEF-STAND.jpg" alt="Slide 3"></li>
-										</ul>
-									</div>
-									<button class="js-btn-outline carousel-button prev">&#10094;</button>
-									<button class="carousel-button js-btn-outline next">&#10095;</button>
-									<div class="carousel-nav">
-										<button class="carousel-indicator current-slide"></button>
-										<button class="carousel-indicator"></button>
-										<button class="carousel-indicator"></button>
-									</div>
-								</div>
-								<p>Thanks to everyone who helped and encouraged me throughout the process!</p>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
-         <button class="btn js-btn-outline p2 m2" onclick="toggleSection('content1')">Learn More</button>
+			<button class="btn js-btn-outline p2 m2" onclick="toggleSection('content1')">Learn More</button>
 		</div>
 		<hr class="hr-double">
 		<!-- Footer -->

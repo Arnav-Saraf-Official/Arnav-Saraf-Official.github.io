@@ -4,15 +4,17 @@
 	let {
 		children,
 		ref = $bindable<HTMLElement | null>(null),
-		class: className = ''
+		class: className = '',
+		style: styleProp = ''
 	}: {
 		children: Snippet;
 		ref?: HTMLElement | null;
 		class?: string;
+		style?: string;
 	} = $props();
 </script>
 
-<section bind:this={ref} class="scene {className}">
+<section bind:this={ref} class="scene {className}" style={styleProp}>
 	{@render children()}
 </section>
 
@@ -21,6 +23,7 @@
 		position: relative;
 		min-height: 100vh;
 		width: 100%;
-		overflow: hidden;
+		/* clip instead of hidden so position:sticky works through this boundary */
+		overflow: clip;
 	}
 </style>

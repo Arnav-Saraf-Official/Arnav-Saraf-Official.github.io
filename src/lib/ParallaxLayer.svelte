@@ -35,7 +35,9 @@
 
 <div
 	class="parallax-layer {className}"
-	style="transform: translate3d({tx}px, {ty}px, 0) scale({sc}); {op != null ? `opacity: ${op};` : ''} {styleProp}"
+	style="transform: translate3d({tx}px, {ty}px, 0) scale({sc}); {op != null
+		? `opacity: ${op};`
+		: ''} {styleProp}"
 >
 	{#if children}{@render children()}{/if}
 </div>

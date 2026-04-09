@@ -2,11 +2,21 @@ let y = $state(0);
 
 // single module-level listener
 if (typeof window !== 'undefined') {
-	window.addEventListener('scroll', () => { y = window.scrollY; }, { passive: true });
+	window.addEventListener(
+		'scroll',
+		() => {
+			y = window.scrollY;
+		},
+		{ passive: true }
+	);
 }
 
 export function useScroll() {
-	return { get y() { return y; } };
+	return {
+		get y() {
+			return y;
+		}
+	};
 }
 
 export function viewportProgress(scrollY: number, el: HTMLElement | null): number {

@@ -3,6 +3,7 @@ export { default as Layer } from './Layer.svelte';
 export { default as ScrollBar } from './ScrollBar.svelte';
 export { useScroll, viewportProgress, stickyProgress } from './scroll.svelte';
 export { createPan } from './usePan.svelte';
+export { createWalk } from './useWalk.svelte';
 export { phaseProgress, lerp } from './motion.js';
 export { layerTransform, type Camera } from './camera.js';
 export { default as TempleScene } from './scenes/TempleScene.svelte';

@@ -19,13 +19,6 @@ export function useScroll() {
 	};
 }
 
-/**
- * Tracks an element's offsetTop and offsetHeight via ResizeObserver so that
- * scroll-progress calculations never call getBoundingClientRect() on the hot
- * scroll path (which forces synchronous layout reflow every frame).
- *
- * Must be called during component initialisation (inside <script>).
- */
 export function useElementLayout(getEl: () => HTMLElement | null) {
 	let offsetTop = $state(0);
 	let offsetHeight = $state(0);
@@ -42,7 +35,7 @@ export function useElementLayout(getEl: () => HTMLElement | null) {
 
 		const ro = new ResizeObserver(update);
 		ro.observe(el);
-		// also observe body so positional shifts (e.g. earlier scenes resizing) are caught
+		// also observe body so positional shifts are caught
 		ro.observe(document.body);
 
 		return () => ro.disconnect();
@@ -64,6 +57,8 @@ export function viewportProgress(scrollY: number, offsetTop: number, offsetHeigh
 }
 
 export function stickyProgress(scrollY: number, offsetTop: number, offsetHeight: number): number {
+	if (typeof window === 'undefined') return 0;
+
 	const range = offsetHeight - window.innerHeight;
 	if (range <= 0) return 0;
 	return Math.max(0, Math.min(1, (scrollY - offsetTop) / range));

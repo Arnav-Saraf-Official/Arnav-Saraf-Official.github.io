@@ -14,7 +14,6 @@
 	:global(html) {
 		/* hide native scrollbar */
 		scrollbar-width: none;
-		scroll-behavior: smooth;
 	}
 	:global(html::-webkit-scrollbar) {
 		display: none;

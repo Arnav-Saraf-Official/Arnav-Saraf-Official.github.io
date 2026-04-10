@@ -1,14 +1,15 @@
 <script lang="ts">
-	// scene 3 — night city vertical pan
+	// scene 3
 	// Assets: static/scenes/scene-3/{sky,stars,aurora,moon,city-far,ground-mist,silhouette}.png
 	import Scene from '$lib/Scene.svelte';
 	import Layer from '$lib/Layer.svelte';
-	import { useScroll, viewportProgress } from '$lib/scroll.svelte';
+	import { useScroll, viewportProgress, useElementLayout } from '$lib/scroll.svelte';
 	import { layerTransform, type Camera } from '$lib/camera.js';
 
 	const scroll = useScroll();
 	let el = $state<HTMLElement | null>(null);
-	const p = $derived(viewportProgress(scroll.y, el));
+	const layout = useElementLayout(() => el);
+	const p = $derived(viewportProgress(scroll.y, layout.offsetTop, layout.offsetHeight));
 
 	const camera: Camera = $derived({ panX: 0, panY: p, zoom: 0 });
 	const cityOp = $derived(0.4 + p * 0.5);

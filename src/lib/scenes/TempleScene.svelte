@@ -1,15 +1,16 @@
 <script lang="ts">
-	// scene 1 — temple approach
+	// scene 1
 	// Assets: static/scenes/scene-1/{sky,horizon,mountains-far,mountains-near,mist,temple,ground}.png
 	import Scene from '$lib/Scene.svelte';
 	import Layer from '$lib/Layer.svelte';
-	import { useScroll, viewportProgress } from '$lib/scroll.svelte';
+	import { useScroll, viewportProgress, useElementLayout } from '$lib/scroll.svelte';
 	import { phaseProgress } from '$lib/motion.js';
 	import { layerTransform, type Camera } from '$lib/camera.js';
 
 	const scroll = useScroll();
 	let el = $state<HTMLElement | null>(null);
-	const p = $derived(viewportProgress(scroll.y, el));
+	const layout = useElementLayout(() => el);
+	const p = $derived(viewportProgress(scroll.y, layout.offsetTop, layout.offsetHeight));
 
 	const approachP = $derived(phaseProgress(p, 0, 0.6));
 	const pushP     = $derived(phaseProgress(p, 0.5, 1.0));

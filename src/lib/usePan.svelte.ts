@@ -8,6 +8,7 @@ export function createPan() {
 		let targetX = 0;
 		let targetY = 0;
 		let rafId = 0;
+		let visible = false;
 
 		const onMove = (e: PointerEvent) => {
 			const r = el.getBoundingClientRect();
@@ -23,18 +24,32 @@ export function createPan() {
 		};
 
 		const tick = () => {
-			// lerp toward target
+			if (!visible) {
+				rafId = 0;
+				return;
+			}
 			x += (targetX - x) * 0.08;
 			y += (targetY - y) * 0.08;
 			rafId = requestAnimationFrame(tick);
 		};
-		rafId = requestAnimationFrame(tick);
+
+		const io = new IntersectionObserver(
+			([entry]) => {
+				visible = entry.isIntersecting;
+				if (visible && rafId === 0) {
+					rafId = requestAnimationFrame(tick);
+				}
+			},
+			{ threshold: 0 }
+		);
+		io.observe(el);
 
 		el.addEventListener('pointermove', onMove);
 		el.addEventListener('pointerleave', onLeave);
 
 		return () => {
 			cancelAnimationFrame(rafId);
+			io.disconnect();
 			el.removeEventListener('pointermove', onMove);
 			el.removeEventListener('pointerleave', onLeave);
 		};

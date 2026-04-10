@@ -3,12 +3,13 @@
 	// Assets: static/scenes/scene-2/{sky,far-end,overhead,stalls-left,stalls-right,ground}.png
 	import Scene from '$lib/Scene.svelte';
 	import Layer from '$lib/Layer.svelte';
-	import { useScroll, stickyProgress } from '$lib/scroll.svelte';
+	import { useScroll, stickyProgress, useElementLayout } from '$lib/scroll.svelte';
 	import { createPan } from '$lib/usePan.svelte';
 
 	const scroll = useScroll();
 	let el = $state<HTMLElement | null>(null);
-	const traversal = $derived(stickyProgress(scroll.y, el));
+	const layout = useElementLayout(() => el);
+	const traversal = $derived(stickyProgress(scroll.y, layout.offsetTop, layout.offsetHeight));
 
 	const pan = createPan();
 	$effect(() => {

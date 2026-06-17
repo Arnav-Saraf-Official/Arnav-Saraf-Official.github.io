@@ -1,0 +1,22 @@
+---
+title: "Neural Simulator"
+description: "Interactive neural network playground with real-time training visualization."
+category: ml
+tags: [python, tensorflow, react]
+order: 1
+liveUrl: "https://example.com/neural"
+sourceUrl: "https://github.com/example/neural-simulator"
+screenshots: []
+featured: false
+---
+
+## Neural Simulator
+
+An interactive web-based playground for designing, training, and visualizing neural networks in real time. Built with **TensorFlow.js** and **React**.
+
+### Features
+
+- Drag-and-drop layer builder
+- Real-time loss curve visualization
+- 3D weight heatmap using WebGL
+- Export to TensorFlow SavedModel format

@@ -1,0 +1,23 @@
+---
+title: "Asteroid Miner"
+description: "A roguelike space mining game with procedurally generated asteroids."
+category: game
+tags: [unity, csharp, shaders]
+order: 1
+liveUrl: "https://example.com/asteroid"
+sourceUrl: "https://github.com/example/asteroid-miner"
+caseStudyUrl: "https://example.com/case-study"
+screenshots: []
+featured: true
+---
+
+## Asteroid Miner
+
+A roguelike space mining game where you pilot a small drone through procedurally generated asteroid fields. Built in **Unity** with custom HLSL shaders.
+
+### Features
+
+- Procedural asteroid generation using 3D noise
+- Real-time destructible terrain
+- Dynamic lighting in deep space
+- Upgrade tree with 40+ drone modifications

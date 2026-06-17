@@ -1,0 +1,24 @@
+---
+title: "Orbital Dashboard"
+description: "Real-time space weather monitoring dashboard with 3D solar visualization."
+category: web
+tags: [svelte, three.js, d3]
+order: 1
+liveUrl: "https://example.com"
+sourceUrl: "https://github.com/example/orbital-dashboard"
+screenshots: []
+featured: true
+---
+
+## Orbital Dashboard
+
+A real-time space weather monitoring dashboard that visualizes solar activity, geomagnetic storms, and satellite orbits using **Three.js** and **D3.js**.
+
+### Features
+
+- 3D solar wind particle simulation
+- Real-time satellite orbit tracking
+- Geomagnetic storm alerts
+- Dark mode with customizable HUD
+
+Built with SvelteKit for the frontend, pulling data from NASA and NOAA APIs. The 3D visualization renders solar particles as a WebGL particle system with magnetic field line tracing.

@@ -1,3 +1,392 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+/* ---- Space Capsule Theme ---- */
+:root {
+	--capsule-bg: #05081a;
+	--panel-bg: rgba(8, 10, 28, 0.9);
+	--panel-border: rgba(0, 150, 220, 0.25);
+	--text-primary: #c8e6ff;
+	--text-dim: rgba(180, 210, 240, 0.55);
+	--text-bright: #e0f0ff;
+	--accent-cyan: #00ddff;
+	--accent-magenta: #ff44ff;
+	--accent-green: #44ff44;
+	--accent-amber: #ffaa00;
+	--glow-cyan: 0 0 12px rgba(0, 200, 255, 0.35);
+	--font-mono: 'Courier New', 'Consolas', 'Monaco', monospace;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: var(--capsule-bg);
+	color: var(--text-primary);
+	font-family: var(--font-mono);
+}
+
+/* ---- Capsule Grid Layout ---- */
+.capsule-grid {
+	display: grid;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background: var(--capsule-bg);
+	color: var(--text-primary);
+	grid-template-areas:
+		'left-screen  main-viewport  right-screen'
+		'left-screen  main-viewport  right-screen'
+		'left-screen  hologram       right-screen'
+		'control-panel control-panel control-panel';
+	grid-template-columns: 250px 1fr 250px;
+	grid-template-rows: 1fr 1fr 200px 56px;
+	gap: 0;
+	position: relative;
+}
+
+/* ---- Capsule Panel Zones ---- */
+.main-viewport {
+	grid-area: main-viewport;
+	position: relative;
+	overflow: hidden;
+	box-shadow: inset 0 0 30px rgba(0, 100, 200, 0.08);
+	border-left: 1px solid var(--panel-border);
+	border-right: 1px solid var(--panel-border);
+}
+
+.main-viewport canvas {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.hologram-zone {
+	grid-area: hologram;
+	position: relative;
+	overflow: hidden;
+	border: 1px solid var(--panel-border);
+	border-bottom: none;
+}
+
+.hologram-zone canvas {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.hologram-zone::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	box-shadow: inset 0 0 20px rgba(0, 180, 255, 0.1);
+	z-index: 2;
+}
+
+.left-screen {
+	grid-area: left-screen;
+	background: var(--panel-bg);
+	border-right: 1px solid var(--panel-border);
+	padding: 18px 16px;
+	overflow-y: auto;
+	background-image: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 2px,
+		rgba(0, 200, 220, 0.015) 2px,
+		rgba(0, 200, 220, 0.015) 4px
+	);
+}
+
+.right-screen {
+	grid-area: right-screen;
+	background: var(--panel-bg);
+	border-left: 1px solid var(--panel-border);
+	padding: 18px 16px;
+	overflow-y: auto;
+	background-image: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 2px,
+		rgba(0, 200, 220, 0.015) 2px,
+		rgba(0, 200, 220, 0.015) 4px
+	);
+}
+
+.control-panel {
+	grid-area: control-panel;
+	background: rgba(5, 8, 20, 0.96);
+	border-top: 1px solid var(--panel-border);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 32px;
+	padding: 6px 24px;
+}
+
+/* ---- Scanlines overlay ---- */
+.scanlines {
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	z-index: 100;
+	background: repeating-linear-gradient(
+		0deg,
+		rgba(0, 0, 0, 0.06) 0px,
+		rgba(0, 0, 0, 0.06) 1px,
+		transparent 1px,
+		transparent 3px
+	);
+}
+
+/* ---- Keyframe Animations ---- */
+@keyframes flicker-in {
+	0%,
+	100% {
+		opacity: 0.3;
+	}
+	20% {
+		opacity: 0.8;
+	}
+	30% {
+		opacity: 0.2;
+	}
+	40% {
+		opacity: 1;
+	}
+	60% {
+		opacity: 0.5;
+	}
+	80% {
+		opacity: 0.9;
+	}
+}
+
+@keyframes text-flicker {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	15% {
+		opacity: 0.7;
+	}
+	25% {
+		opacity: 1;
+	}
+	55% {
+		opacity: 0.4;
+	}
+	60% {
+		opacity: 1;
+	}
+}
+
+@keyframes pulse-glow {
+	0%,
+	100% {
+		box-shadow: var(--glow-cyan);
+	}
+	50% {
+		box-shadow: 0 0 20px rgba(0, 200, 255, 0.6);
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slide-up {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* ---- Boot Sequence ---- */
+.boot-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 200;
+	background: #020408;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	color: var(--accent-cyan);
+	font-family: var(--font-mono);
+	font-size: 15px;
+}
+
+.boot-line {
+	animation: flicker-in 0.4s ease-out both;
+}
+
+.boot-line:nth-child(1) {
+	animation-delay: 0s;
+}
+.boot-line:nth-child(2) {
+	animation-delay: 0.25s;
+}
+.boot-line:nth-child(3) {
+	animation-delay: 0.5s;
+}
+.boot-line:nth-child(4) {
+	animation-delay: 0.75s;
+}
+
+.boot-line .label {
+	color: var(--text-dim);
+}
+.boot-line .status {
+	color: var(--accent-green);
+	margin-left: 4px;
+}
+
+/* ---- Skip Button ---- */
+.skip-button {
+	position: fixed;
+	bottom: 24px;
+	right: 24px;
+	z-index: 150;
+	padding: 8px 22px;
+	background: rgba(0, 0, 0, 0.55);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	color: rgba(255, 255, 255, 0.65);
+	font-family: var(--font-mono);
+	font-size: 13px;
+	cursor: pointer;
+	transition: all 0.2s;
+	backdrop-filter: blur(4px);
+	letter-spacing: 1px;
+}
+
+.skip-button:hover {
+	background: rgba(255, 255, 255, 0.08);
+	color: white;
+	border-color: rgba(255, 255, 255, 0.45);
+}
+
+/* ---- Control Panel Components ---- */
+.ctrl-btn {
+	padding: 6px 18px;
+	background: transparent;
+	border: 1px solid var(--panel-border);
+	color: var(--text-dim);
+	font-family: var(--font-mono);
+	font-size: 13px;
+	cursor: pointer;
+	transition: all 0.2s;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.ctrl-btn:hover {
+	color: var(--text-bright);
+	border-color: var(--accent-cyan);
+	box-shadow: var(--glow-cyan);
+}
+
+.ctrl-btn.active {
+	color: var(--accent-cyan);
+	border-color: var(--accent-cyan);
+	box-shadow: var(--glow-cyan);
+	background: rgba(0, 200, 255, 0.06);
+}
+
+.ctrl-toggle {
+	padding: 4px 12px;
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	color: var(--text-dim);
+	font-family: var(--font-mono);
+	font-size: 11px;
+	cursor: pointer;
+	transition: all 0.2s;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+}
+
+.ctrl-toggle:hover {
+	color: var(--text-bright);
+}
+
+.ctrl-toggle.on {
+	border-color: var(--accent-cyan);
+	color: var(--accent-cyan);
+	box-shadow: 0 0 6px rgba(0, 200, 255, 0.25);
+}
+
+/* ---- Left/Right Screen Typography ---- */
+.screen-title {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: var(--text-dim);
+	margin-bottom: 12px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	padding-bottom: 6px;
+}
+
+.screen-label {
+	font-size: 11px;
+	color: var(--text-dim);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin-top: 14px;
+	margin-bottom: 4px;
+}
+
+.screen-value {
+	font-size: 13px;
+	color: var(--text-primary);
+}
+
+.screen-link {
+	font-size: 13px;
+	color: var(--accent-cyan);
+	text-decoration: none;
+	display: block;
+	margin: 3px 0;
+	transition: color 0.2s;
+}
+
+.screen-link:hover {
+	color: white;
+	text-shadow: var(--glow-cyan);
+}
+
+/* ---- Warp overlay ---- */
+.warp-flash {
+	position: absolute;
+	inset: 0;
+	z-index: 10;
+	pointer-events: none;
+	background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.warp-flash.active {
+	opacity: 1;
+	transition: opacity 0.15s;
+}

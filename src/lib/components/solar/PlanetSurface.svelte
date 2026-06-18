@@ -70,10 +70,7 @@
 		};
 	});
 
-	// Continuous 3D dust field projected to 2D — genuine perspective parallax depth.
-	// Particles live at fixed positions in a virtual volume; the camera flies forward
-	// along z as you scroll, so motes stream out from the vanishing point, brighten as
-	// they approach, then sweep past the edges and fade. No repeating "layers".
+	//3d dust field
 	type Mote = {
 		x: number;
 		y: number;
@@ -98,7 +95,7 @@
 	}));
 	let overlayCanvas = $state<HTMLCanvasElement | null>(null);
 
-	// Soft radial sprite, pre-rendered once — gives glowing dust motes instead of hard dots
+	// soft particle sprite, prerendered
 	let moteSprite: HTMLCanvasElement | null = null;
 	function buildSprite() {
 		const c = document.createElement('canvas');
@@ -113,8 +110,7 @@
 		const r = (n >> 16) & 255;
 		const gg = (n >> 8) & 255;
 		const b = n & 255;
-		// Tight bright core + faint wide halo => reads as a point of light (a distant
-		// star), not a fuzzy dust blob. The near-white core gives it a crisp sparkle.
+
 		const grad = g.createRadialGradient(32, 32, 0, 32, 32, 32);
 		const mix = (c: number) => Math.round(c + (255 - c) * 0.55); // tint core toward white
 		grad.addColorStop(0, `rgba(${mix(r)},${mix(gg)},${mix(b)},1)`);
@@ -127,10 +123,9 @@
 		return c;
 	}
 
-	// Camera depth advances with scroll (and drifts slowly so the field always breathes)
 	let driftDepth = 0;
 
-	// RAF: smooth scroll interpolation + 2D particle overlay draw
+	// RAF: smooth scroll interp + 2D particle overlay draw
 	let prevTime = 0;
 	$effect(() => {
 		let running = true;

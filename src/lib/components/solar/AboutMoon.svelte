@@ -6,18 +6,18 @@
 
 	const moonGeom = new THREE.SphereGeometry(0.6, 32, 32);
 	const moonMat = new THREE.MeshStandardMaterial({
-		color: '#7f8c8d',
+		color: '#9a958a', // Warm grey rock — matches the tan ABOUT identity
 		roughness: 0.8,
 		metalness: 0.1,
-		emissive: '#1a1a1a',
+		emissive: '#1a1a18',
 		emissiveIntensity: 0.05
 	});
 
 	const atmoGeom = new THREE.SphereGeometry(0.65, 32, 32);
 	const atmoMat = new THREE.MeshBasicMaterial({
-		color: '#8e44ad',
+		color: '#c9c2a8',
 		transparent: true,
-		opacity: 0.2,
+		opacity: 0.12,
 		depthWrite: false,
 		blending: THREE.AdditiveBlending
 	});

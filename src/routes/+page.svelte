@@ -70,8 +70,8 @@
 		bottom: 40px;
 		right: 36px;
 		z-index: 20;
-		background: rgba(4, 7, 18, 0.78);
-		border: 1px solid rgba(0, 150, 220, 0.22);
+		background: rgba(5, 8, 20, 0.78);
+		border: 1px solid rgba(160, 195, 235, 0.18);
 		backdrop-filter: blur(10px);
 		padding: 14px 18px;
 		font-family: 'Courier New', monospace;
@@ -85,7 +85,7 @@
 	.hint-title {
 		font-size: 9px;
 		letter-spacing: 4px;
-		color: rgba(0, 200, 255, 0.55);
+		color: rgba(200, 230, 255, 0.55);
 		margin-bottom: 10px;
 	}
 	.hint-rows {
@@ -109,11 +109,11 @@
 	.hint-desc {
 		font-size: 9px;
 		letter-spacing: 1.5px;
-		color: rgba(200, 230, 255, 0.38);
+		color: rgba(200, 230, 255, 0.42);
 	}
 	kbd {
-		background: rgba(0, 140, 210, 0.1);
-		border: 1px solid rgba(0, 150, 220, 0.28);
+		background: rgba(160, 195, 235, 0.08);
+		border: 1px solid rgba(160, 195, 235, 0.24);
 		padding: 2px 5px;
 		font-family: 'Courier New', monospace;
 		font-size: 9px;

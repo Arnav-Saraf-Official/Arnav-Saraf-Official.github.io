@@ -12,9 +12,9 @@
 
 	const labels: Label[] = [
 		{ worldPos: [0, 0, 0], name: 'HOME', color: '#ff8800', route: '/' },
-		{ worldPos: [6, 0, 0], name: 'PROJECTS', color: '#4488ff', route: '/projects' },
-		{ worldPos: [2.5, 0.5, 0], name: 'ABOUT', color: '#bbbbaa', route: '/about' },
-		{ worldPos: [9, 0.5, 2], name: 'CONTACT', color: '#8899ff', route: '/contact' }
+		{ worldPos: [11.5, 0, 0], name: 'PROJECTS', color: '#4488ff', route: '/projects' },
+		{ worldPos: [4, 0.5, 0], name: 'ABOUT', color: '#bbbbaa', route: '/about' },
+		{ worldPos: [16.5, 0.5, 3], name: 'CONTACT', color: '#8899ff', route: '/contact' }
 	];
 
 	interface ScreenLabel {

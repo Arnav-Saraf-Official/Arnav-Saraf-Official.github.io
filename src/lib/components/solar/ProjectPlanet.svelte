@@ -8,18 +8,18 @@
 
 	const planetGeom = new THREE.SphereGeometry(1.8, 48, 48);
 	const planetMat = new THREE.MeshStandardMaterial({
-		color: '#2b580c', // Dark forest green / planetary surface
+		color: '#1f3a5c', // Deep ocean blue — matches the PROJECTS label identity
 		roughness: 0.7,
 		metalness: 0.2,
-		emissive: '#113300',
-		emissiveIntensity: 0.1
+		emissive: '#0a1a33',
+		emissiveIntensity: 0.12
 	});
 
 	const atmoGeom = new THREE.SphereGeometry(1.95, 48, 48);
 	const atmoMat = new THREE.MeshBasicMaterial({
-		color: '#44ff44',
+		color: '#4488ff',
 		transparent: true,
-		opacity: 0.18,
+		opacity: 0.14,
 		depthWrite: false,
 		blending: THREE.AdditiveBlending
 	});

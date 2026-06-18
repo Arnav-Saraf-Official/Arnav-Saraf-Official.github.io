@@ -4,26 +4,31 @@
 
 	let groupRef = $state<THREE.Group | undefined>(undefined);
 
-	// Simple visible sun — MeshBasicMaterial always renders, no lights needed
+	// Solid sun body — warm cream, not blown-out white
 	const sunGeom = new THREE.SphereGeometry(2.5, 64, 64);
-	const sunMat = new THREE.MeshBasicMaterial({ color: '#fff9e6' });
+	const sunMat = new THREE.MeshBasicMaterial({ color: '#ffe9b0' });
 
-	// Corona glow shell
-	const coronaGeom = new THREE.SphereGeometry(3.2, 48, 48);
-	const coronaMat = new THREE.MeshBasicMaterial({
-		color: '#ffaa00',
-		transparent: true,
-		opacity: 0.28,
-		depthWrite: false,
-		blending: THREE.AdditiveBlending
-	});
+	// Soft radial halo as a single camera-facing sprite, so the glow falls off
+	// smoothly instead of stacking into a hard-edged muddy band. Kept subtle.
+	function buildGlowSprite(): THREE.CanvasTexture {
+		const c = document.createElement('canvas');
+		c.width = c.height = 128;
+		const g = c.getContext('2d')!;
+		const grad = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+		grad.addColorStop(0.0, 'rgba(255, 226, 160, 0.55)');
+		grad.addColorStop(0.18, 'rgba(255, 196, 110, 0.32)');
+		grad.addColorStop(0.45, 'rgba(255, 150, 70, 0.10)');
+		grad.addColorStop(1.0, 'rgba(255, 130, 60, 0)');
+		g.fillStyle = grad;
+		g.fillRect(0, 0, 128, 128);
+		const tex = new THREE.CanvasTexture(c);
+		tex.needsUpdate = true;
+		return tex;
+	}
 
-	// Outer glow
-	const outerGeom = new THREE.SphereGeometry(4.0, 32, 32);
-	const outerMat = new THREE.MeshBasicMaterial({
-		color: '#ff4400',
+	const haloMat = new THREE.SpriteMaterial({
+		map: buildGlowSprite(),
 		transparent: true,
-		opacity: 0.12,
 		depthWrite: false,
 		blending: THREE.AdditiveBlending
 	});
@@ -42,6 +47,5 @@
 
 <T.Group bind:ref={groupRef}>
 	<T.Mesh geometry={sunGeom} material={sunMat} />
-	<T.Mesh geometry={coronaGeom} material={coronaMat} />
-	<T.Mesh geometry={outerGeom} material={outerMat} />
+	<T.Sprite material={haloMat} scale={[11, 11, 11]} />
 </T.Group>

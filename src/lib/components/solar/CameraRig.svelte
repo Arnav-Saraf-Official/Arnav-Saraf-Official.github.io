@@ -10,33 +10,114 @@
 	} from '$lib/stores/landing.svelte';
 	import { setCamera as setSharedCamera } from '$lib/stores/camera.svelte';
 
-	const { camera } = useThrelte();
+	const { camera, renderer } = useThrelte();
 
 	$effect(() => {
 		setSharedCamera(camera.current);
 	});
 
-	let yaw = $state(0);
+	// --- CAD / OnShape-style orbit state ---
+	// The camera orbits a focus point. Right-drag rotates, middle-drag (or
+	// Ctrl/Shift + right-drag) pans the focus, the wheel dollies in/out.
+	let target = new THREE.Vector3(6, 0, 0);
+	let radius = 20;
+	let theta = 0.15; // azimuth around +y
+	let phi = 1.15; // polar from +y axis
+
+	const MIN_RADIUS = 3;
+	const MAX_RADIUS = 55;
+	const MIN_PHI = 0.15;
+	const MAX_PHI = Math.PI - 0.15;
+
+	// WASD still flies the focus point, with a little momentum for a spacey feel.
 	let velX = $state(0);
 	let velY = $state(0);
 	let velZ = $state(0);
-	let angVel = $state(0);
 	let prevTime = 0;
 
 	const THRUST = 12;
 	const DRAG = 1.8;
 	const MAX_SPEED = 5;
-	const ROT_THRUST = 4;
-	const ROT_DRAG = 3;
-	const MAX_ANG_SPEED = 2;
-	const MIN_Y = 0.5;
-	const MAX_Y = 12;
+	const MIN_Y = -3;
+	const MAX_Y = 8;
+
+	// Attach pointer/wheel controls to the WebGL canvas.
+	$effect(() => {
+		const el = renderer?.domElement;
+		if (!el) return;
+
+		let mode: 'none' | 'rotate' | 'pan' = 'none';
+		let lastX = 0;
+		let lastY = 0;
+
+		const onContextMenu = (e: MouseEvent) => e.preventDefault();
+
+		const onPointerDown = (e: PointerEvent) => {
+			if (e.button === 2) {
+				mode = e.ctrlKey || e.shiftKey ? 'pan' : 'rotate';
+			} else if (e.button === 1) {
+				mode = 'pan';
+			} else {
+				return;
+			}
+			e.preventDefault();
+			lastX = e.clientX;
+			lastY = e.clientY;
+			el.setPointerCapture?.(e.pointerId);
+		};
+
+		const onPointerMove = (e: PointerEvent) => {
+			if (mode === 'none') return;
+			const dx = e.clientX - lastX;
+			const dy = e.clientY - lastY;
+			lastX = e.clientX;
+			lastY = e.clientY;
+
+			if (mode === 'rotate') {
+				theta -= dx * 0.005;
+				phi = Math.max(MIN_PHI, Math.min(MAX_PHI, phi - dy * 0.005));
+			} else {
+				const cam = camera.current;
+				if (!cam) return;
+				const panScale = radius * 0.0016;
+				const right = new THREE.Vector3().setFromMatrixColumn(cam.matrix, 0);
+				const up = new THREE.Vector3().setFromMatrixColumn(cam.matrix, 1);
+				target.addScaledVector(right, -dx * panScale);
+				target.addScaledVector(up, dy * panScale);
+			}
+		};
+
+		const onPointerUp = (e: PointerEvent) => {
+			mode = 'none';
+			el.releasePointerCapture?.(e.pointerId);
+		};
+
+		const onWheel = (e: WheelEvent) => {
+			e.preventDefault();
+			radius *= 1 + Math.sign(e.deltaY) * 0.08;
+			radius = Math.max(MIN_RADIUS, Math.min(MAX_RADIUS, radius));
+		};
+
+		el.addEventListener('contextmenu', onContextMenu);
+		el.addEventListener('pointerdown', onPointerDown);
+		window.addEventListener('pointermove', onPointerMove);
+		window.addEventListener('pointerup', onPointerUp);
+		el.addEventListener('wheel', onWheel, { passive: false });
+
+		return () => {
+			el.removeEventListener('contextmenu', onContextMenu);
+			el.removeEventListener('pointerdown', onPointerDown);
+			window.removeEventListener('pointermove', onPointerMove);
+			window.removeEventListener('pointerup', onPointerUp);
+			el.removeEventListener('wheel', onWheel);
+		};
+	});
 
 	const targetPositions: Record<string, THREE.Vector3> = {
-		sun: new THREE.Vector3(0, 2, 4),
-		projects: new THREE.Vector3(6, 2, 3),
-		about: new THREE.Vector3(2.5, 1.5, 2),
-		contact: new THREE.Vector3(9, 1.5, 4)
+		sun: new THREE.Vector3(0, 2, 4.5),
+		projects: new THREE.Vector3(11.5, 1.5, 4),
+		about: new THREE.Vector3(4, 1, 2),
+		contact: new THREE.Vector3(16.5, 1.5, 5)
 	};
 
 	let landingStartPos = new THREE.Vector3();
@@ -94,23 +175,12 @@
 				return;
 			}
 
-			// --- FREE FLIGHT ---
-			if (isKeyDown('KeyQ')) angVel += ROT_THRUST * dt;
-			if (isKeyDown('KeyE')) angVel -= ROT_THRUST * dt;
-
-			if (Math.abs(angVel) > 0.001) {
-				const dragForce = ROT_DRAG * Math.abs(angVel) * dt;
-				angVel = Math.sign(angVel) * Math.max(0, Math.abs(angVel) - dragForce);
-			} else {
-				angVel = 0;
-			}
-			angVel = Math.max(-MAX_ANG_SPEED, Math.min(MAX_ANG_SPEED, angVel));
-			yaw += angVel * dt;
-
-			const fwdX = -Math.sin(yaw);
-			const fwdZ = -Math.cos(yaw);
-			const rightX = Math.cos(yaw);
-			const rightZ = -Math.sin(yaw);
+			// --- FREE FLIGHT (orbit camera; WASD pans the focus point) ---
+			// Forward/right on the ground plane, derived from the orbit azimuth.
+			const fwdX = -Math.sin(theta);
+			const fwdZ = -Math.cos(theta);
+			const rightX = Math.cos(theta);
+			const rightZ = -Math.sin(theta);
 
 			let ax = 0,
 				az = 0;
@@ -165,18 +235,22 @@
 				velZ *= MAX_SPEED / speed;
 			}
 
-			cam.position.x += velX * dt;
-			cam.position.y += velY * dt;
-			cam.position.z += velZ * dt;
-			cam.position.y = Math.max(MIN_Y, Math.min(MAX_Y, cam.position.y));
+			target.x += velX * dt;
+			target.y += velY * dt;
+			target.z += velZ * dt;
+			target.y = Math.max(MIN_Y, Math.min(MAX_Y, target.y));
 
-			const lookTarget = cam.position.clone();
-			lookTarget.x += fwdX * 8;
-			lookTarget.z += fwdZ * 8;
-			cam.lookAt(lookTarget);
+			// Place the camera on its orbit sphere around the focus point.
+			const sinPhi = Math.sin(phi);
+			cam.position.set(
+				target.x + radius * sinPhi * Math.sin(theta),
+				target.y + radius * Math.cos(phi),
+				target.z + radius * sinPhi * Math.cos(theta)
+			);
+			cam.lookAt(target);
 
 			landingStartPos.copy(cam.position);
-			landingStartLook.copy(lookTarget);
+			landingStartLook.copy(target);
 
 			requestAnimationFrame(tick);
 		}

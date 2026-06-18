@@ -49,20 +49,21 @@
 
 <div class="solar-canvas-wrapper">
 	<Canvas>
-		<T.PerspectiveCamera makeDefault position={[0, 4, 12]} fov={55} near={0.1} far={100} />
+		<T.PerspectiveCamera makeDefault position={[9, 8, 18]} fov={55} near={0.1} far={120} />
 		<CameraRig />
 		<Starfield count={1200} radius={40} />
 		<T.AmbientLight intensity={0.3} />
-		<T.PointLight position={[0, 0, 0]} intensity={3.5} distance={100} decay={1.5} castShadow />
+		<T.PointLight position={[0, 0, 0]} intensity={3.5} distance={120} decay={1.5} castShadow />
 		<Sun />
-		<T.Group position={[6, 0, 0]}>
-			<ProjectPlanet />
-		</T.Group>
-		<AsteroidBelt />
-		<T.Group position={[2.5, 0.5, 0]}>
+		<!-- Concentric zones out from the Sun: About (inner) → belt → Projects → Contact -->
+		<T.Group position={[4, 0.5, 0]}>
 			<AboutMoon />
 		</T.Group>
-		<T.Group position={[9, 0.5, 2]}>
+		<AsteroidBelt />
+		<T.Group position={[11.5, 0, 0]}>
+			<ProjectPlanet />
+		</T.Group>
+		<T.Group position={[16.5, 0.5, 3]}>
 			<ContactComet />
 		</T.Group>
 	</Canvas>

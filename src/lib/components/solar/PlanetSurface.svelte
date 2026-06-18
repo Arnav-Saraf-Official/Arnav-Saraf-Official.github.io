@@ -1,20 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { Canvas, T } from '@threlte/core';
-	import type { Snippet } from 'svelte';
 	import * as THREE from 'three';
+	import type { Snippet } from 'svelte';
 	import StarfieldSmall from './StarfieldSmall.svelte';
-
-	interface Props {
-		planetName: string;
-		skyColor: string;
-		horizonColor: string;
-		groundColor: string;
-		cloudColor: string;
-		starColor: string;
-		particleColor: string;
-		children: Snippet;
-	}
 
 	let {
 		planetName,
@@ -25,7 +14,16 @@
 		starColor,
 		particleColor,
 		children
-	}: Props = $props();
+	}: {
+		planetName: string;
+		skyColor: string;
+		horizonColor: string;
+		groundColor: string;
+		cloudColor: string;
+		starColor: string;
+		particleColor: string;
+		children: Snippet;
+	} = $props();
 
 	let cameraRef = $state<THREE.PerspectiveCamera | undefined>(undefined);
 
@@ -72,7 +70,67 @@
 		};
 	});
 
-	// Smooth interpolation
+	// Continuous 3D dust field projected to 2D — genuine perspective parallax depth.
+	// Particles live at fixed positions in a virtual volume; the camera flies forward
+	// along z as you scroll, so motes stream out from the vanishing point, brighten as
+	// they approach, then sweep past the edges and fade. No repeating "layers".
+	type Mote = {
+		x: number;
+		y: number;
+		z: number;
+		size: number;
+		bright: number;
+		phase: number;
+		tw: number;
+	};
+	const MOTE_COUNT = 150;
+	const FIELD_DEPTH = 9; // z-span of the field (world units)
+	const FIELD_NEAR = 0.16; // closest a mote gets before it recycles
+	const FOCAL = 0.85; // perspective focal length (spread strength)
+	const field: Mote[] = Array.from({ length: MOTE_COUNT }, () => ({
+		x: Math.random() * 2 - 1,
+		y: Math.random() * 2 - 1,
+		z: Math.random() * FIELD_DEPTH,
+		size: 0.45 + Math.random() * 1.4,
+		bright: 0.35 + Math.random() * 0.65,
+		phase: Math.random() * Math.PI * 2, // twinkle phase offset
+		tw: 0.6 + Math.random() * 1.8 // twinkle speed
+	}));
+	let overlayCanvas = $state<HTMLCanvasElement | null>(null);
+
+	// Soft radial sprite, pre-rendered once — gives glowing dust motes instead of hard dots
+	let moteSprite: HTMLCanvasElement | null = null;
+	function buildSprite() {
+		const c = document.createElement('canvas');
+		c.width = c.height = 64;
+		const g = c.getContext('2d');
+		if (!g) return null;
+		const m = particleColor.replace('#', '');
+		const hex = m.length === 3
+			? m.split('').map((ch) => ch + ch).join('')
+			: m;
+		const n = parseInt(hex, 16);
+		const r = (n >> 16) & 255;
+		const gg = (n >> 8) & 255;
+		const b = n & 255;
+		// Tight bright core + faint wide halo => reads as a point of light (a distant
+		// star), not a fuzzy dust blob. The near-white core gives it a crisp sparkle.
+		const grad = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+		const mix = (c: number) => Math.round(c + (255 - c) * 0.55); // tint core toward white
+		grad.addColorStop(0, `rgba(${mix(r)},${mix(gg)},${mix(b)},1)`);
+		grad.addColorStop(0.08, `rgba(${r},${gg},${b},0.95)`);
+		grad.addColorStop(0.22, `rgba(${r},${gg},${b},0.4)`);
+		grad.addColorStop(0.5, `rgba(${r},${gg},${b},0.08)`);
+		grad.addColorStop(1, `rgba(${r},${gg},${b},0)`);
+		g.fillStyle = grad;
+		g.fillRect(0, 0, 64, 64);
+		return c;
+	}
+
+	// Camera depth advances with scroll (and drifts slowly so the field always breathes)
+	let driftDepth = 0;
+
+	// RAF: smooth scroll interpolation + 2D particle overlay draw
 	let prevTime = 0;
 	$effect(() => {
 		let running = true;
@@ -81,6 +139,59 @@
 			const dt = prevTime ? Math.min((time - prevTime) / 1000, 0.1) : 0;
 			prevTime = time;
 			scrollIndex += (targetScrollIndex - scrollIndex) * Math.min(10 * dt, 1);
+
+			const cvs = overlayCanvas;
+			if (cvs) {
+				if (!moteSprite) moteSprite = buildSprite();
+				// Keep canvas resolution in sync with display size
+				if (cvs.width !== cvs.offsetWidth) cvs.width = cvs.offsetWidth;
+				if (cvs.height !== cvs.offsetHeight) cvs.height = cvs.offsetHeight;
+				const ctx = cvs.getContext('2d');
+				if (ctx && moteSprite) {
+					const w = cvs.width;
+					const h = cvs.height;
+					ctx.clearRect(0, 0, w, h);
+
+					// Camera depth: scroll drives the bulk of travel, plus a gentle constant drift
+					driftDepth += dt * 0.09;
+					const camDepth = scrollIndex * 2.4 + driftDepth;
+
+					const cx = w * 0.5;
+					const cy = h * 0.46;
+					const spread = Math.min(w, h) * 0.5;
+					ctx.globalCompositeOperation = 'lighter';
+
+					for (const p of field) {
+						// Wrap depth continuously into [NEAR, NEAR + DEPTH)
+						let dz = (((p.z - camDepth - FIELD_NEAR) % FIELD_DEPTH) + FIELD_DEPTH) % FIELD_DEPTH;
+						const dn = dz / FIELD_DEPTH; // 0 = at camera, 1 = far
+						dz += FIELD_NEAR;
+
+						const s = FOCAL / dz; // perspective scale
+						const sx = cx + p.x * spread * s;
+						const sy = cy + p.y * spread * s;
+
+						// Depth opacity: fade in from the distance, fade out as it sweeps past
+						let op: number;
+						if (dn > 0.8) op = (1 - dn) / 0.2;
+						else if (dn < 0.07) op = dn / 0.07;
+						else op = 1;
+						// Twinkle: gentle per-mote brightness flicker so they sparkle like stars
+						const twinkle = 0.75 + 0.25 * Math.sin(time * 0.001 * p.tw + p.phase);
+						op *= p.bright * 0.55 * twinkle;
+						if (op < 0.004) continue;
+
+						const size = p.size * s * 13;
+						if (sx < -size || sx > w + size || sy < -size || sy > h + size) continue;
+
+						ctx.globalAlpha = op;
+						ctx.drawImage(moteSprite, sx - size * 0.5, sy - size * 0.5, size, size);
+					}
+					ctx.globalAlpha = 1;
+					ctx.globalCompositeOperation = 'source-over';
+				}
+			}
+
 			requestAnimationFrame(tick);
 		}
 		requestAnimationFrame(tick);
@@ -106,7 +217,7 @@
 		}
 	});
 
-	// Sections styling
+	// Sections styling — depth layers sweeping toward and past the camera
 	$effect(() => {
 		sections.forEach((section, i) => {
 			const d = i - scrollIndex;
@@ -118,38 +229,42 @@
 			section.style.pointerEvents = Math.abs(d) < 0.15 ? 'auto' : 'none';
 
 			if (d > 1) {
+				// Far ahead — tiny invisible speck
 				section.style.opacity = '0';
-				section.style.transform = 'translate(-50%, -50%) scale(0.1)';
-				section.style.top = '40%';
-				section.style.filter = 'blur(10px)';
+				section.style.transform = 'translate(-50%, -50%) scale(0.06)';
+				section.style.top = '38%';
+				section.style.filter = 'blur(16px)';
 				section.style.visibility = 'hidden';
 			} else if (d >= 0) {
+				// Approaching: emerges from a distant speck, resolves sharply at d=0
 				section.style.visibility = 'visible';
 				const t = 1 - d;
-				const scale = 0.25 + 0.75 * t;
-				const opacity = t;
-				const top = 40 + 8 * t;
+				const scale = t < 0.5 ? 0.06 + 0.14 * (t / 0.5) : 0.2 + 0.8 * ((t - 0.5) / 0.5);
+				const opacity = t < 0.4 ? 0 : Math.pow((t - 0.4) / 0.6, 1.5);
+				const blur = (1 - t) * 14;
 
-				section.style.top = `${top}%`;
-				section.style.transform = `translate(-50%, -50%) scale(${scale})`;
-				section.style.opacity = `${opacity}`;
-				section.style.filter = `blur(${(1 - t) * 6}px)`;
+				section.style.top = `${36 + 12 * t}%`;
+				section.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
+				section.style.opacity = `${Math.min(1, opacity).toFixed(3)}`;
+				section.style.filter = blur > 0.3 ? `blur(${blur.toFixed(1)}px)` : '';
 			} else if (d > -1) {
+				// Passing through: grows and fades as camera flies through the layer
 				section.style.visibility = 'visible';
 				const t = -d;
-				const scale = 1.0 + 3.0 * t;
-				const opacity = Math.max(0, 1 - t * 1.5);
-				const top = 48 + 12 * t;
+				const scale = 1.0 + 0.6 * t;
+				const opacity = Math.max(0, 1 - t * 1.6);
+				const blur = t * 14;
 
-				section.style.top = `${top}%`;
-				section.style.transform = `translate(-50%, -50%) scale(${scale})`;
-				section.style.opacity = `${opacity}`;
-				section.style.filter = `blur(${t * 12}px)`;
+				section.style.top = `${48 + 7 * t}%`;
+				section.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
+				section.style.opacity = `${opacity.toFixed(3)}`;
+				section.style.filter = blur > 0.3 ? `blur(${blur.toFixed(1)}px)` : '';
 			} else {
+				// Far past — gone behind camera
 				section.style.opacity = '0';
-				section.style.transform = 'translate(-50%, -50%) scale(4)';
-				section.style.top = '60%';
-				section.style.filter = 'blur(16px)';
+				section.style.transform = 'translate(-50%, -50%) scale(1.6)';
+				section.style.top = '55%';
+				section.style.filter = 'blur(14px)';
 				section.style.visibility = 'hidden';
 			}
 		});
@@ -173,25 +288,6 @@
 		sizeAttenuation: true,
 		depthWrite: false,
 		blending: THREE.AdditiveBlending
-	});
-
-	// Floating dust
-	const dustCount = 120;
-	const dustPositions = new Float32Array(dustCount * 3);
-	for (let i = 0; i < dustCount; i++) {
-		dustPositions[i * 3] = (Math.random() - 0.5) * 20;
-		dustPositions[i * 3 + 1] = Math.random() * 6;
-		dustPositions[i * 3 + 2] = (Math.random() - 0.5) * 60 - 10;
-	}
-	const dustGeom = new THREE.BufferGeometry();
-	dustGeom.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
-	const dustMat = new THREE.PointsMaterial({
-		color: particleColor,
-		size: 0.08,
-		transparent: true,
-		opacity: 0.5,
-		sizeAttenuation: true,
-		depthWrite: false
 	});
 
 	// Terrain — flat-shaded standard material
@@ -259,9 +355,6 @@
 			<!-- Terrain -->
 			<T.Mesh geometry={terrainGeom} material={terrainMat} position={[0, -5, -10]} />
 
-			<!-- Dust particles -->
-			<T.Points geometry={dustGeom} material={dustMat} />
-
 			<!-- Near ground plane -->
 			<T.Mesh position={[0, -6.5, -10]} rotation={[-Math.PI / 2, 0, 0]}>
 				<T.PlaneGeometry args={[100, 100]} />
@@ -269,6 +362,9 @@
 			</T.Mesh>
 		</Canvas>
 	</div>
+
+	<!-- 2D rock particle overlay — drawn in sync with text section transforms -->
+	<canvas bind:this={overlayCanvas} class="particle-overlay"></canvas>
 
 	<!-- Navigation -->
 	<nav class="planet-nav">
@@ -283,7 +379,6 @@
 	<!-- Scroll hint -->
 	<div class="walk-indicator" style:opacity={Math.max(0, 1 - progress * 2.5)}>
 		<span>SCROLL TO EXPLORE</span>
-		<span class="walk-arrow">&darr;</span>
 	</div>
 
 	<!-- Content -->
@@ -316,6 +411,15 @@
 		width: 100% !important;
 		height: 100% !important;
 		pointer-events: none !important;
+	}
+
+	.particle-overlay {
+		position: fixed;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 4;
+		pointer-events: none;
 	}
 
 	.planet-nav {
@@ -366,24 +470,24 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 4px;
+		gap: 6px;
 		font-family: 'Courier New', monospace;
 		font-size: 11px;
-		color: rgba(200, 230, 255, 0.3);
 		letter-spacing: 3px;
-		transition: opacity 0.5s;
+		transition: opacity 0.6s;
+		animation: hint-pulse 2.4s ease-in-out infinite;
 	}
-	.walk-arrow {
-		animation: bounce-arrow 1.5s ease-in-out infinite;
-		font-size: 14px;
+	.walk-indicator span:first-child {
+		color: rgba(200, 230, 255, 0.75);
+		text-shadow: 0 0 10px rgba(100, 180, 255, 0.5);
 	}
-	@keyframes bounce-arrow {
+	@keyframes hint-pulse {
 		0%,
 		100% {
-			transform: translateY(0);
+			opacity: 1;
 		}
 		50% {
-			transform: translateY(6px);
+			opacity: 0.55;
 		}
 	}
 

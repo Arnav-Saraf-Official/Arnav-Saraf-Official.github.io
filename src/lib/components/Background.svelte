@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
 
-    interface Props {
+    export interface Props {
         gap?: number;
         dotRadius?: number;
         hoverRadius?: number;
@@ -14,7 +14,7 @@
         gap = 30,
         dotRadius = 2,
         hoverRadius = 150,
-        maxOffset = 16,     // Slightly higher for better visual pull
+        maxOffset = 16,
         noiseScale = 4,
         noiseSpeed = 0.01
     }: Props = $props();
@@ -59,7 +59,6 @@
         };
 
         const handleMouseLeave = (): void => {
-            // Let mouse target drift off screen smoothly
             mouse.x = -1000;
             mouse.y = -1000;
         };
@@ -74,7 +73,6 @@
 
             time += noiseSpeed;
 
-            // Always perform lerp so vmouse smoothly catches up to mouse
             vmouse.x += (mouse.x - vmouse.x) * mouseEasing;
             vmouse.y += (mouse.y - vmouse.y) * mouseEasing;
 
@@ -103,7 +101,7 @@
                     const distance = Math.sqrt(dx * dx + dy * dy);
 
                     if (distance < hoverRadius) {
-                        // Smooth easing curve (cubic fadeout for natural falloff)
+
                         const rawForce = (hoverRadius - distance) / hoverRadius;
                         const force = rawForce * rawForce; 
                         

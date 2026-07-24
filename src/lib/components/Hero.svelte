@@ -1,0 +1,13 @@
+<script>
+    import Typewriter from '$lib/components/Typewriter.svelte';
+</script>
+<div class="flex flex-col items-center justify-center min-h-full h-screen p-[2vw]">
+    <div class="flex flex-col w-full p-[4vw] gap-[2vh]">    
+        
+        <h1 class="text-[10vw] font-bold text-white -ml-1 sm:-ml-2 titleRainbow">
+            Hello World
+        </h1>
+        <Typewriter></Typewriter>
+
+    </div>
+</div>

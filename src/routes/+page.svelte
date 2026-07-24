@@ -5,11 +5,11 @@
 
 <section id="about" class="py-24">
     <div class="mx-auto w-[80%] px-6 sm:px-8">
-        <div class="rounded-[1.75rem] border border-white/10 bg-white/5 p-8 shadow-[0_24px_60px_rgba(0,0,0,0.14)] backdrop-blur-xl flex flex-col gap-12 xl:flex-row xl:items-center xl:justify-between">
+        <div class="rounded-[1.75rem] border border-white/10 bg-white/5 p-8 shadow-[0_24px_60px_rgba(0,0,0,0.14)] backdrop-blur-[8px] flex flex-col gap-12 xl:flex-row xl:items-center xl:justify-between">
             <div class="space-y-6 xl:max-w-2xl">
                 <div class="space-y-3">
                     <p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-300">About Me</p>
-                    <h2 class="text-3xl font-semibold text-white sm:text-4xl">Who I am and what I build</h2>
+                    <h2 class="text-3xl font-semibold text-white sm:text-4xl titleRainbow">Who I am and what I build</h2>
                 </div>
                 <div class="space-y-6 text-slate-300">
                     <p class="leading-8">

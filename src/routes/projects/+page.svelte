@@ -110,7 +110,11 @@
 		background: rgba(255, 255, 255, 0.02);
 		border: 1px solid rgba(255, 255, 255, 0.05);
 		text-decoration: none;
-		transition: all 0.2s;
+		transition:
+			background-color,
+			border-color,
+			box-shadow,
+			transform 0.2s;
 	}
 	.project-card:hover {
 		background: rgba(0, 200, 255, 0.04);

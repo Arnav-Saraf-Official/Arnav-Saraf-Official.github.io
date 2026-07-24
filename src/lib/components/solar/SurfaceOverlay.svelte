@@ -205,7 +205,10 @@
 		text-decoration: none;
 		font-size: 13px;
 		letter-spacing: 3px;
-		transition: all 0.2s;
+		transition:
+			color,
+			border-color,
+			background-color 0.2s;
 	}
 	.contact-link:hover {
 		background: rgba(0, 200, 255, 0.1);

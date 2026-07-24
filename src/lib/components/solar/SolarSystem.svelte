@@ -49,7 +49,7 @@
 
 <div class="solar-canvas-wrapper">
 	<Canvas>
-		<T.PerspectiveCamera makeDefault position={[9, 8, 18]} fov={55} near={0.1} far={120} />
+		<T.PerspectiveCamera makeDefault position={[5, 4, 12]} fov={55} near={0.1} far={120} />
 		<CameraRig />
 		<Starfield count={1200} radius={40} />
 		<T.AmbientLight intensity={0.3} />

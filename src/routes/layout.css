@@ -275,7 +275,11 @@ body {
 	font-family: var(--font-mono);
 	font-size: 13px;
 	cursor: pointer;
-	transition: all 0.2s;
+	transition:
+		background-color,
+		color,
+		border-color,
+		opacity 0.2s;
 	backdrop-filter: blur(4px);
 	letter-spacing: 1px;
 }
@@ -295,7 +299,11 @@ body {
 	font-family: var(--font-mono);
 	font-size: 13px;
 	cursor: pointer;
-	transition: all 0.2s;
+	transition:
+		background-color,
+		color,
+		border-color,
+		box-shadow 0.2s;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 }
@@ -321,7 +329,10 @@ body {
 	font-family: var(--font-mono);
 	font-size: 11px;
 	cursor: pointer;
-	transition: all 0.2s;
+	transition:
+		color,
+		border-color,
+		background-color 0.2s;
 	letter-spacing: 0.5px;
 	text-transform: uppercase;
 }

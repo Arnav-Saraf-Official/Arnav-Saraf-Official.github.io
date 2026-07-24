@@ -264,7 +264,10 @@
 		letter-spacing: 2px;
 		padding: 4px 12px;
 		border: 1px solid rgba(0, 200, 255, 0.3);
-		transition: all 0.2s;
+		transition:
+			background-color,
+			color,
+			border-color 0.2s;
 	}
 	.fp-links a:hover {
 		background: rgba(0, 200, 255, 0.1);

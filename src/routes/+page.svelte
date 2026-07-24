@@ -1,2 +1,5 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import Background from '$lib/components/Background.svelte';
+</script>
+
+<Background gap={25} dotRadius={1.5} hoverRadius={380} maxOffset={5} />

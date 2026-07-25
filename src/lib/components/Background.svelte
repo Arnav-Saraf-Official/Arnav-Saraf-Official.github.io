@@ -78,7 +78,7 @@
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            const hue = Math.floor(scrollPercent * 360);
+            const hue = Math.floor(scrollPercent * 180);
             const viewWidth = canvas.width / dpr;
             const viewHeight = canvas.height / dpr;
 

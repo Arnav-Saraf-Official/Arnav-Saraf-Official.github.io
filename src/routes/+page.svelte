@@ -1,4 +1,7 @@
-<script>
+<script lang="ts">
+    import { resolve } from '$app/paths';
+    import { goto } from '$app/navigation';
+    import Github from '$lib/components/Github.svelte';
     import Hero from '$lib/components/Hero.svelte';
 </script>
 <Hero />
@@ -9,15 +12,20 @@
             <div class="space-y-6 xl:max-w-2xl">
                 <div class="space-y-3">
                     <p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-300">About Me</p>
-                    <h2 class="text-3xl font-semibold text-white sm:text-4xl titleRainbow">Who I am and what I build</h2>
+                    <h2 class="text-3xl font-semibold text-white sm:text-4xl titleRainbow">Who I am and what I do</h2>
                 </div>
                 <div class="space-y-6 text-slate-300">
                     <p class="leading-8">
-                        I’m a designer-developer who builds polished digital experiences with thoughtful motion, strong typography, and clean interaction. I enjoy turning ideas into interfaces that feel intentional, personal, and memorable.
+                        Hi, my name is Arnav Saraf, and I am a rising sophmore. I am very interested in basically all things science, and love building projects and experiementing with new ideas.
                     </p>
                     <p class="leading-8">
-                        My work blends modern web technologies with a subtle visual language that keeps the focus on content and clarity. I care most about readability, performance, and creating interfaces that people want to use.
+                        I have a lot of experience with Robotics, computer and data science, and embedded systems. I have participated in science fairs since I was in first grade, and I have even placed top three in the state twice.
                     </p>
+                </div>
+                <div class="flex flex-row justify-evenly align-center">
+                    <a class="button bg-accent-blue hover:bg-accent-blue/80 no-underline" href={resolve('/#projects')} on:click={(e) => { e.preventDefault(); goto(resolve('/#projects')); }}> My Projects</a>
+                    <a class="button-outline no-underline border-accent-green border-[3px]" href={resolve('/#github')} on:click={(e) => { e.preventDefault(); goto(resolve('/#github')); }}> My Github Projects</a>
+                    <a class="button-glass no-underline" href={resolve('/#contributions')} on:click={(e) => { e.preventDefault(); goto(resolve('/#contributions')); }}> My Contributions</a>
                 </div>
             </div>
             <div class="flex justify-center xl:justify-end">
@@ -27,3 +35,6 @@
     </div>
 </section>
 
+<section id="github">
+    <Github></Github>
+</section>

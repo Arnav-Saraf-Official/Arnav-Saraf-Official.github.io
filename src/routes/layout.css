@@ -79,8 +79,11 @@
   a:hover {
     text-decoration: underline;
   }
-  .titleRainbow:hover{
-    animation:alternate 1s rainbow ease-in-out;
+  .titleRainbow {
+    animation: none;
+  }
+  .titleRainbow:hover {
+    animation: rainbow 0.85s ease-in-out 1 forwards;
   }
   .button {
     display: inline-flex;
@@ -176,12 +179,23 @@
     filter: brightness(1.1);
   }
 }
-
-@keyframes rainbow{
-        0%{ color: var(--color-white); }
-        20%{ color: var(--color-accent-blue); }
-        40%{ color: var(--color-accent-yellow); }
-        60%{ color: var(--color-accent-red); }
-        80%{ color: var(--color-accent-green); }
-        100%{ color: var(--color-white); }
+@keyframes rainbow {
+  0% {
+    color: #ffffff;
+  }
+  20% {
+    color: var(--color-accent-blue);
+  }
+  40% {
+    color: var(--color-accent-yellow);
+  }
+  60% {
+    color: var(--color-accent-red);
+  }
+  80% {
+    color: var(--color-accent-green);
+  }
+  100% {
+    color: #ffffff;
+  }
 }

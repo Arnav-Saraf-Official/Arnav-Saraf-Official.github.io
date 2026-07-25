@@ -3,6 +3,7 @@
     import { goto } from '$app/navigation';
     import Github from '$lib/components/Github.svelte';
     import Hero from '$lib/components/Hero.svelte';
+    import ParticleWindow from '$lib/particles/ParticleWindow.svelte';
 </script>
 <Hero />
 
@@ -32,6 +33,20 @@
                 <img src="/image.png" alt="Portrait illustration" class="w-full max-w-sm rounded-[1.5rem] border border-white/10 object-cover shadow-2xl" />
             </div>
         </div>
+    </div>
+</section>
+
+<section id="test" class="py-24">
+    <div class="mx-auto w-[80%] px-6 sm:px-8">
+        <ParticleWindow class="rounded-[1.75rem] border border-white/10 p-8" style="min-height: 300px;">
+                <div class="space-y-3">
+                    <p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-300">Particle Test</p>
+                    <h2 class="text-3xl font-semibold text-white sm:text-4xl">Shared Particle World</h2>
+                </div>
+                <p class="mt-4 leading-8 text-slate-300">
+                    This card is a window into the shared particle simulation. Move your mouse around to see the interaction ring push particles away. The same particle world is visible through any card with the <code class="text-accent-blue">.particle-window</code> class.
+                </p>
+        </ParticleWindow>
     </div>
 </section>
 

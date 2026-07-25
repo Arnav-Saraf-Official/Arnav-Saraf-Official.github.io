@@ -20,13 +20,13 @@
   
   {#if ownedRepos.length > 0}
     <div class="flex flex-col gap-3">
-      <h1 class="px-6 text-4xl font-semibold text-white titleRainbow mx-auto">
+      <h1 class="px-6 text-3xl font-semibold text-white titleRainbow mx-auto">
         My Own Repositories
       </h1>
       <div class="marquee-container flex overflow-hidden">
         <div class="marquee-track track-left flex gap-4 pr-4" style="--computed-time: {ownedRepos.length*9}s">
           {#each duplicatedOwned as repo, i (repo.url + '-' + i)}
-            <div class="w-80 shrink-0 rounded-xl border border-white/10 bg-[#2f2f2f] backdrop-blur-[6px] p-4 text-slate-200 shadow-md">
+            <div class="w-80 shrink-0 rounded-xl border border-white/10 bg-[#1f1f1f]/50 backdrop-blur-[6px] p-4 text-slate-200 shadow-md">
               <div class="mb-2 flex items-center justify-between gap-2">
                 <!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
                 <a href={repo.url} target="_blank" rel="noopener noreferrer external" class="truncate font-semibold text-[#8ab4f8] hover:underline">

@@ -1,6 +1,5 @@
 <script lang="ts">
     import { resolve } from '$app/paths';
-    import { goto } from '$app/navigation';
     import Github from '$lib/components/Github.svelte';
     import Hero from '$lib/components/Hero.svelte';
     import ParticleWindow from '$lib/particles/ParticleWindow.svelte';
@@ -24,9 +23,9 @@
                     </p>
                 </div>
                 <div class="flex flex-row justify-evenly align-center">
-                    <a class="button bg-accent-blue hover:bg-accent-blue/80 no-underline" href={resolve('/#projects')} on:click={(e) => { e.preventDefault(); goto(resolve('/#projects')); }}> My Projects</a>
-                    <a class="button-outline no-underline border-accent-green border-[3px]" href={resolve('/#github')} on:click={(e) => { e.preventDefault(); goto(resolve('/#github')); }}> My Github Projects</a>
-                    <a class="button-glass no-underline" href={resolve('/#contributions')} on:click={(e) => { e.preventDefault(); goto(resolve('/#contributions')); }}> My Contributions</a>
+                    <a class="button bg-accent-blue hover:bg-accent-blue/80 no-underline" href={resolve('/#projects')}> My Projects</a>
+                    <a class="button-outline no-underline border-accent-green border-[3px]" href={resolve('/#github')}> My Github Projects</a>
+                    <a class="button-glass no-underline" href={resolve('/#contributions')}> My Contributions</a>
                 </div>
             </div>
             <div class="flex justify-center xl:justify-end">
@@ -36,7 +35,7 @@
     </div>
 </section>
 
-<section id="test" class="py-24">
+<section id="projects" class="py-24">
     <div class="mx-auto w-[80%] px-6 sm:px-8">
         <ParticleWindow class="rounded-[1.75rem] border border-white/10 p-8" style="min-height: 300px;">
                 <div class="space-y-3">
@@ -51,5 +50,19 @@
 </section>
 
 <section id="github">
+    <div id="contributions" class="sr-only"></div>
     <Github></Github>
+</section>
+
+<div id="cta" class="sr-only"></div>
+<section id="contact" class="py-24">
+    <div class="mx-auto w-[80%] px-6 sm:px-8">
+        <div class="rounded-[1.75rem] border border-white/10 bg-white/5 p-8 shadow-[0_24px_60px_rgba(0,0,0,0.14)] backdrop-blur-[8px] text-slate-300">
+            <p class="text-sm font-semibold uppercase tracking-[0.3em] text-slate-300">Get in touch</p>
+            <h2 class="mt-4 text-3xl font-semibold text-white sm:text-4xl">Let's build something together.</h2>
+            <p class="mt-6 leading-8 text-slate-300">
+                I’m open to new opportunities, collaborations, and freelance work. If you'd like to connect, feel free to reach out through the contact details on this page.
+            </p>
+        </div>
+    </div>
 </section>

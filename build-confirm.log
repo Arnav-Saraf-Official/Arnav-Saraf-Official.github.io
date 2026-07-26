@@ -1,0 +1,303 @@
+
+> arnav-saraf-official.github.io@0.0.1 build
+> vite build
+
+[36mvite v8.1.5 [32mbuilding ssr environment for production...[36m[39m
+[2K
+11:20:25 PM [vite-plugin-svelte] src/routes/+page.svelte:27:119 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+25:                 </div>
+26:                 <div class="flex flex-row justify-evenly align-center">
+27:                     <a class="button bg-accent-blue hover:bg-accent-blue/80 no-underline" href={resolve('/#projects')} on:click={(e) => { e.preventDefault(); goto(resolve('/#projects')); }}> My Projects</a>
+                                                                                                                                                                                                 ^
+28:                     <a class="button-outline no-underline border-accent-green border-[3px]" href={resolve('/#github')} on:click={(e) => { e.preventDefault(); goto(resolve('/#github')); }}> My Github Projects</a>
+29:                     <a class="button-glass no-underline" href={resolve('/#contributions')} on:click={(e) => { e.preventDefault(); goto(resolve('/#contributions')); }}> My Contributions</a>
+11:20:25 PM [vite-plugin-svelte] src/routes/+page.svelte:28:119 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+26:                 <div class="flex flex-row justify-evenly align-center">
+27:                     <a class="button bg-accent-blue hover:bg-accent-blue/80 no-underline" href={resolve('/#projects')} on:click={(e) => { e.preventDefault(); goto(resolve('/#projects')); }}> My Projects</a>
+28:                     <a class="button-outline no-underline border-accent-green border-[3px]" href={resolve('/#github')} on:click={(e) => { e.preventDefault(); goto(resolve('/#github')); }}> My Github Projects</a>
+                                                                                                                                                                                               ^
+29:                     <a class="button-glass no-underline" href={resolve('/#contributions')} on:click={(e) => { e.preventDefault(); goto(resolve('/#contributions')); }}> My Contributions</a>
+30:                 </div>
+11:20:25 PM [vite-plugin-svelte] src/routes/+page.svelte:29:91 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+27:                     <a class="button bg-accent-blue hover:bg-accent-blue/80 no-underline" href={resolve('/#projects')} on:click={(e) => { e.preventDefault(); goto(resolve('/#projects')); }}> My Projects</a>
+28:                     <a class="button-outline no-underline border-accent-green border-[3px]" href={resolve('/#github')} on:click={(e) => { e.preventDefault(); goto(resolve('/#github')); }}> My Github Projects</a>
+29:                     <a class="button-glass no-underline" href={resolve('/#contributions')} on:click={(e) => { e.preventDefault(); goto(resolve('/#contributions')); }}> My Contributions</a>
+                                                                                                                                                                          ^
+30:                 </div>
+31:             </div>
+11:20:25 PM [vite-plugin-svelte] src/routes/+layout.svelte:24:1 Using `<slot>` to render parent content is deprecated. Use `{@render ...}` tags instead
+https://svelte.dev/e/slot_element_deprecated
+22: <main style="position:absolute;top:0;left:0;width:100%;height:100%;">
+23:   <Navbar />
+24:   <slot />
+              ^
+25:   <Footer />
+26: </main>
+11:20:25 PM [vite-plugin-svelte] src/lib/components/Navbar.svelte:33:27 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+31:   <div class="mx-auto flex max-w-3xl items-center justify-between rounded-full border border-white/10 bg-[#2f2f2f]/10 p-2 px-6 shadow-lg backdrop-blur-[8px] transition-all duration-300">
+32:     
+33:     <a href={resolve('/')} on:click={(e) => { e.preventDefault(); goto(resolve('/')); }} class="flex items-center gap-2 font-display text-lg font-bold tracking-tight text-white transition-opacity hover:opacity-80 no-underline">
+                                                                                            ^
+34:       <span class="inline-block h-3 w-3 rounded-full" style="background-color: {currentAccent};"></span>
+35:       Hello
+11:20:25 PM [vite-plugin-svelte] src/lib/components/Navbar.svelte:43:12 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+41:           <a
+42:             href={resolve(item.href)}
+43:             on:click={(e) => { e.preventDefault(); goto(resolve(item.href)); activeIndex = index; }}
+                                                                                                        ^
+44:             class="rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200 no-underline 
+45:               {activeIndex === index 
+11:20:25 PM [vite-plugin-svelte] src/lib/components/Navbar.svelte:57:6 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+55:     <a
+56:       href={resolve('/#cta')}
+57:       on:click={(e) => { e.preventDefault(); goto(resolve('/#cta')); }}
+                                                                           ^
+58:       class="button"
+59:       style="--button-accent: {currentAccent};"
+11:20:25 PM [vite-plugin-svelte] src/lib/particles/ParticleWorld.svelte:12:27 This reference only captures the initial value of `config`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+10:   let { config = {} }: Props = $props();
+11: 
+12:   const engine = initEngine(config);
+                                      ^
+13: 
+14:   onMount(() => {
+11:20:26 PM [vite-plugin-svelte] src/lib/components/FadeText.svelte:21:15 This reference only captures the initial value of `texts`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+19:     }: Props = $props();
+20: 
+21:     if (typeof texts === 'string') {
+                        ^
+22:         texts = [texts];
+23:     }
+11:20:26 PM [vite-plugin-svelte] src/lib/components/FadeText.svelte:22:17 This reference only captures the initial value of `texts`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+20: 
+21:     if (typeof texts === 'string') {
+22:         texts = [texts];
+                          ^
+23:     }
+24: 
+11:20:26 PM [vite-plugin-svelte] src/lib/components/FadeText.svelte:25:9 This reference only captures the initial value of `texts`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+23:     }
+24: 
+25:     if (!texts || texts.length === 0) {
+                  ^
+26:         texts = [''];
+27:     }
+11:20:26 PM [vite-plugin-svelte] src/lib/components/FadeText.svelte:25:18 This reference only captures the initial value of `texts`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+23:     }
+24: 
+25:     if (!texts || texts.length === 0) {
+                           ^
+26:         texts = [''];
+27:     }
+11:20:26 PM [vite-plugin-svelte] src/lib/components/FadeText.svelte:29:29 This reference only captures the initial value of `texts`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+27:     }
+28: 
+29:     let currentText = $state(texts[0]);
+                                      ^
+30:     let visible = $state(true);
+31:     let index = 0;
+11:20:26 PM [vite-plugin-svelte] src/lib/components/Typewriter.svelte:16:15 This reference only captures the initial value of `data`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+14: 
+15:     const parsedData: Record<string, string[]> =
+16:         typeof data === 'string' ? JSON.parse(data) : data;
+                       ^
+17: 
+18:     const colors = [
+11:20:26 PM [vite-plugin-svelte] src/lib/components/Typewriter.svelte:16:46 This reference only captures the initial value of `data`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+14: 
+15:     const parsedData: Record<string, string[]> =
+16:         typeof data === 'string' ? JSON.parse(data) : data;
+                                                      ^
+17: 
+18:     const colors = [
+11:20:26 PM [vite-plugin-svelte] src/lib/components/Typewriter.svelte:16:54 This reference only captures the initial value of `data`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+14: 
+15:     const parsedData: Record<string, string[]> =
+16:         typeof data === 'string' ? JSON.parse(data) : data;
+                                                              ^
+17: 
+18:     const colors = [
+transforming...Γ£ô 171 modules transformed.
+rendering chunks...
+[36mvite v8.1.5 [32mbuilding client environment for production...[36m[39m
+[2K
+11:20:28 PM [vite-plugin-svelte] src/routes/+page.svelte:27:119 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+25:                 </div>
+26:                 <div class="flex flex-row justify-evenly align-center">
+27:                     <a class="button bg-accent-blue hover:bg-accent-blue/80 no-underline" href={resolve('/#projects')} on:click={(e) => { e.preventDefault(); goto(resolve('/#projects')); }}> My Projects</a>
+                                                                                                                                                                                                 ^
+28:                     <a class="button-outline no-underline border-accent-green border-[3px]" href={resolve('/#github')} on:click={(e) => { e.preventDefault(); goto(resolve('/#github')); }}> My Github Projects</a>
+29:                     <a class="button-glass no-underline" href={resolve('/#contributions')} on:click={(e) => { e.preventDefault(); goto(resolve('/#contributions')); }}> My Contributions</a>
+11:20:28 PM [vite-plugin-svelte] src/routes/+page.svelte:28:119 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+26:                 <div class="flex flex-row justify-evenly align-center">
+27:                     <a class="button bg-accent-blue hover:bg-accent-blue/80 no-underline" href={resolve('/#projects')} on:click={(e) => { e.preventDefault(); goto(resolve('/#projects')); }}> My Projects</a>
+28:                     <a class="button-outline no-underline border-accent-green border-[3px]" href={resolve('/#github')} on:click={(e) => { e.preventDefault(); goto(resolve('/#github')); }}> My Github Projects</a>
+                                                                                                                                                                                               ^
+29:                     <a class="button-glass no-underline" href={resolve('/#contributions')} on:click={(e) => { e.preventDefault(); goto(resolve('/#contributions')); }}> My Contributions</a>
+30:                 </div>
+11:20:28 PM [vite-plugin-svelte] src/routes/+page.svelte:29:91 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+27:                     <a class="button bg-accent-blue hover:bg-accent-blue/80 no-underline" href={resolve('/#projects')} on:click={(e) => { e.preventDefault(); goto(resolve('/#projects')); }}> My Projects</a>
+28:                     <a class="button-outline no-underline border-accent-green border-[3px]" href={resolve('/#github')} on:click={(e) => { e.preventDefault(); goto(resolve('/#github')); }}> My Github Projects</a>
+29:                     <a class="button-glass no-underline" href={resolve('/#contributions')} on:click={(e) => { e.preventDefault(); goto(resolve('/#contributions')); }}> My Contributions</a>
+                                                                                                                                                                          ^
+30:                 </div>
+31:             </div>
+11:20:28 PM [vite-plugin-svelte] src/routes/+layout.svelte:24:1 Using `<slot>` to render parent content is deprecated. Use `{@render ...}` tags instead
+https://svelte.dev/e/slot_element_deprecated
+22: <main style="position:absolute;top:0;left:0;width:100%;height:100%;">
+23:   <Navbar />
+24:   <slot />
+              ^
+25:   <Footer />
+26: </main>
+11:20:28 PM [vite-plugin-svelte] src/lib/components/Navbar.svelte:33:27 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+31:   <div class="mx-auto flex max-w-3xl items-center justify-between rounded-full border border-white/10 bg-[#2f2f2f]/10 p-2 px-6 shadow-lg backdrop-blur-[8px] transition-all duration-300">
+32:     
+33:     <a href={resolve('/')} on:click={(e) => { e.preventDefault(); goto(resolve('/')); }} class="flex items-center gap-2 font-display text-lg font-bold tracking-tight text-white transition-opacity hover:opacity-80 no-underline">
+                                                                                            ^
+34:       <span class="inline-block h-3 w-3 rounded-full" style="background-color: {currentAccent};"></span>
+35:       Hello
+11:20:28 PM [vite-plugin-svelte] src/lib/components/Navbar.svelte:43:12 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+41:           <a
+42:             href={resolve(item.href)}
+43:             on:click={(e) => { e.preventDefault(); goto(resolve(item.href)); activeIndex = index; }}
+                                                                                                        ^
+44:             class="rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200 no-underline 
+45:               {activeIndex === index 
+11:20:28 PM [vite-plugin-svelte] src/lib/components/Navbar.svelte:57:6 Using `on:click` to listen to the click event is deprecated. Use the event attribute `onclick` instead
+https://svelte.dev/e/event_directive_deprecated
+55:     <a
+56:       href={resolve('/#cta')}
+57:       on:click={(e) => { e.preventDefault(); goto(resolve('/#cta')); }}
+                                                                           ^
+58:       class="button"
+59:       style="--button-accent: {currentAccent};"
+11:20:28 PM [vite-plugin-svelte] src/lib/particles/ParticleWorld.svelte:12:27 This reference only captures the initial value of `config`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+10:   let { config = {} }: Props = $props();
+11: 
+12:   const engine = initEngine(config);
+                                      ^
+13: 
+14:   onMount(() => {
+11:20:29 PM [vite-plugin-svelte] src/lib/components/FadeText.svelte:21:15 This reference only captures the initial value of `texts`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+19:     }: Props = $props();
+20: 
+21:     if (typeof texts === 'string') {
+                        ^
+22:         texts = [texts];
+23:     }
+11:20:29 PM [vite-plugin-svelte] src/lib/components/FadeText.svelte:22:17 This reference only captures the initial value of `texts`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+20: 
+21:     if (typeof texts === 'string') {
+22:         texts = [texts];
+                          ^
+23:     }
+24: 
+11:20:29 PM [vite-plugin-svelte] src/lib/components/FadeText.svelte:25:9 This reference only captures the initial value of `texts`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+23:     }
+24: 
+25:     if (!texts || texts.length === 0) {
+                  ^
+26:         texts = [''];
+27:     }
+11:20:29 PM [vite-plugin-svelte] src/lib/components/FadeText.svelte:25:18 This reference only captures the initial value of `texts`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+23:     }
+24: 
+25:     if (!texts || texts.length === 0) {
+                           ^
+26:         texts = [''];
+27:     }
+11:20:29 PM [vite-plugin-svelte] src/lib/components/FadeText.svelte:29:29 This reference only captures the initial value of `texts`. Did you mean to reference it inside a derived instead?
+https://svelte.dev/e/state_referenced_locally
+27:     }
+28: 
+29:     let currentText = $state(texts[0]);
+                                      ^
+30:     let visible = $state(true);
+31:     let index = 0;
+11:20:29 PM [vite-plugin-svelte] src/lib/components/Typewriter.svelte:16:15 This reference only captures the initial value of `data`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+14: 
+15:     const parsedData: Record<string, string[]> =
+16:         typeof data === 'string' ? JSON.parse(data) : data;
+                       ^
+17: 
+18:     const colors = [
+11:20:29 PM [vite-plugin-svelte] src/lib/components/Typewriter.svelte:16:46 This reference only captures the initial value of `data`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+14: 
+15:     const parsedData: Record<string, string[]> =
+16:         typeof data === 'string' ? JSON.parse(data) : data;
+                                                      ^
+17: 
+18:     const colors = [
+11:20:29 PM [vite-plugin-svelte] src/lib/components/Typewriter.svelte:16:54 This reference only captures the initial value of `data`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+14: 
+15:     const parsedData: Record<string, string[]> =
+16:         typeof data === 'string' ? JSON.parse(data) : data;
+                                                              ^
+17: 
+18:     const colors = [
+transforming...Γ£ô 181 modules transformed.
+rendering chunks...
+computing gzip size...
+.svelte-kit/output/client/_app/version.json                         0.02 kB Γöé gzip:   0.04 kB
+.svelte-kit/output/client/.vite/manifest.json                       2.64 kB Γöé gzip:   0.55 kB
+.svelte-kit/output/client/_app/immutable/assets/2.DbJrQFNc.css      0.89 kB Γöé gzip:   0.40 kB
+.svelte-kit/output/client/_app/immutable/assets/0.BwY-IO8U.css     27.49 kB Γöé gzip:   6.03 kB
+.svelte-kit/output/client/_app/immutable/chunks/xihTtKlq.js         0.06 kB Γöé gzip:   0.08 kB
+.svelte-kit/output/client/_app/immutable/entry/start.Clvzd0Xf.js    0.08 kB Γöé gzip:   0.09 kB
+.svelte-kit/output/client/_app/immutable/nodes/1.CVdhwukM.js        0.62 kB Γöé gzip:   0.35 kB
+.svelte-kit/output/client/_app/immutable/chunks/Bjy-W4x2.js         1.36 kB Γöé gzip:   0.65 kB
+.svelte-kit/output/client/_app/immutable/chunks/Dc5wAVHT.js         3.26 kB Γöé gzip:   1.41 kB
+.svelte-kit/output/client/_app/immutable/entry/app.BgcCHdMK.js      4.02 kB Γöé gzip:   1.89 kB
+.svelte-kit/output/client/_app/immutable/nodes/0.BmcVrpav.js        7.17 kB Γöé gzip:   3.23 kB
+.svelte-kit/output/client/_app/immutable/chunks/P4NEDrvF.js        27.55 kB Γöé gzip:  10.67 kB
+.svelte-kit/output/client/_app/immutable/chunks/HKB7IReP.js        43.94 kB Γöé gzip:  16.96 kB
+.svelte-kit/output/client/_app/immutable/nodes/2.By0qjQLl.js      531.85 kB Γöé gzip: 135.26 kB
+
+[32mΓ£ô built in 688ms[39m
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+node:internal/event_target:1101
+  process.nextTick(() => { throw err; });
+                           ^
+Error: The following pages contain links to /#projects, but no element with id="projects" exists on / - see the `handleMissingId` option in https://svelte.dev/docs/kit/configuration#prerender for more info:
+  - /
+To suppress or handle this error, implement `handleMissingId` in https://svelte.dev/docs/kit/configuration#prerender
+    at file:///C:/Users/reach/Organizer/Development/Arnav-Saraf-Official.github.io/node_modules/@sveltejs/kit/src/core/config/options.js:244:13
+    at file:///C:/Users/reach/Organizer/Development/Arnav-Saraf-Official.github.io/node_modules/@sveltejs/kit/src/core/postbuild/prerender.js:80:25
+    at prerender (file:///C:/Users/reach/Organizer/Development/Arnav-Saraf-Official.github.io/node_modules/@sveltejs/kit/src/core/postbuild/prerender.js:606:4)
+    at async MessagePort.<anonymous> (file:///C:/Users/reach/Organizer/Development/Arnav-Saraf-Official.github.io/node_modules/@sveltejs/kit/src/utils/fork.js:23:16)
+
+Node.js v22.15.0

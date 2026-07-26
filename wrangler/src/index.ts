@@ -10,7 +10,7 @@ export default {
     const origin = request.headers.get("Origin");
     const corsHeaders = {
       "Access-Control-Allow-Origin": allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
-      "Access-Control-Allow-Methods": "GET, HEAD, OPTIONS",
+      "Access-Control-Allow-Methods": "GET, HEAD, POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
       "Content-Type": "application/json"
     };
@@ -19,7 +19,7 @@ export default {
 
     const url = new URL(request.url);
     
-    const githubUrl = `https://github.com${url.pathname}${url.search}`;
+    const githubUrl = `https://api.github.com${url.pathname}${url.search}`;
 
     const githubResponse = await fetch(githubUrl, {
       headers: {
